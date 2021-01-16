@@ -1,0 +1,23 @@
+//main: App.scss
+
+.landing{
+  background-image: url(../img/pet3.jpeg);
+  min-height: 80vh;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding-top: 5%;
+}
+
+@media screen and (min-width:550px){
+  .landing{
+  background-image: url(../img/pet2.jpeg);
+  background-position: bottom;}
+}
+
+@media screen and (min-width:780px){
+  .landing{
+  background-image: url(../img/pets.png);
+  background-position: top;}
+}
