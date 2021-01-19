@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Landing = (props) => {
+const Landing = () => {
   return (
     <div className="landing">
       <h1 className="landing__title">Pet Personalities</h1>
