@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PetTypeListItem from '../components/PetTypeListItem';
 
 const PetTypeList = () => {
@@ -11,14 +12,14 @@ const PetTypeList = () => {
      { id: 7, type: 'fishes', img: 'https://www.petlandwichita.com/wp-content/uploads/1970/01/small-animals-1.jpg' },
       ];
   return (
-    <div className="petTypeList">
-  petTypes.map(petType =>
-  <PetTypeListItem
-  key = {petType.id}
-  type = {petType.type}
-  img= {petType.img} />
-  )
-  </div>
+    <Link className="petTypeList">
+{  petTypes.map(petType => {
+    return <PetTypeListItem
+    key = {petType.id}
+    type = {petType.type}
+    img= {petType.img} />;}
+  )}
+</Link>
   );
 };
 

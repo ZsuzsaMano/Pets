@@ -4,17 +4,20 @@ import { BrowserRouter as Router,
         Switch } from 'react-router-dom';
 import Landing from './pages/Landing';
 import PetTypeList from './pages/PetTypeList';
-
+import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
     <div className="App">
-      <Route path='/'>
+      <Navbar/>
+      <Switch>
+      <Route exact path='/'>
      <Landing/>
      </Route>
      <Route path = '/types'>
        <PetTypeList/>
      </Route>
+     </Switch>
     </div>
     </Router>
   );

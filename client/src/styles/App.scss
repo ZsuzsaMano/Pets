@@ -5,6 +5,14 @@
   flex-direction: $direction
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 
 
 @import 'landing';
+@import 'navbar';
+@import 'petTypeList';
+@import 'petTypeListItem';
