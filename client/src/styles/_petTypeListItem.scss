@@ -1,0 +1,16 @@
+//main: App.scss
+
+.petTypeListItem{
+  width: clamp(250px, 60%, 500px);
+  text-align:center;
+  margin: 15px auto;
+  box-shadow: 1px 1px 1px #ddd;
+  filter:drop-shadow(2px 2px 2px grey);
+  &__img-wrap{
+    max-width: clamp(300px, 55%, 400px);
+    margin: 0 auto;
+    img{
+      max-width: 100%;
+    }
+  }
+}
