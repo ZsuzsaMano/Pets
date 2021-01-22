@@ -2,7 +2,11 @@ import React from 'react';
 
 const BreadDetails = () => {
   return (
-    <div />
+    <div className="breeds">
+      <h1></h1>
+      <p>
+      </p>
+    </div>
   );
 };
 
