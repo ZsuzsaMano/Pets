@@ -18,7 +18,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div className="register" id='register'>
       <h1>Register</h1>
       <form className="register__form" action="">
         <input
@@ -30,6 +30,7 @@ const Register = () => {
           required
         />
         <input
+          name = "email"
           type="email"
           placeholder="email"
           value={registration.email}
@@ -37,6 +38,7 @@ const Register = () => {
           required
         />
         <input
+          name = "password"
           type="password"
           placeholder="password"
           value={registration.password}
@@ -44,6 +46,7 @@ const Register = () => {
           required
         />
         <input
+          name = "password2"
           type="password"
           placeholder="repeat password"
           value={registration.password2}

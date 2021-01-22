@@ -1,0 +1,16 @@
+//main: App.scss
+
+.loginreg{
+  @include flex(space-around, center, row);
+  flex-wrap: wrap;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width:565px) {
+.verticalline{
+  width: 1px;
+  height: 400px;
+  background: black;
+}
+}

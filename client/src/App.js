@@ -4,8 +4,7 @@ import { BrowserRouter as Router,
         Switch } from 'react-router-dom';
 import Landing from './pages/Landing';
 import PetTypeList from './pages/PetTypeList';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import LoginReg from './pages/LoginReg';
 import BreedDetails from './pages/BreedDetails';
 import Navbar from './components/Navbar';
 import DataContextProvider from './context/DataContext';
@@ -16,26 +15,23 @@ function App() {
     <Router>
     <div className="App">
       <LoginContextProvider>
+          <DataContextProvider>
       <Navbar/>
       <Switch>
       <Route exact path='/'>
         <Landing/>
       </Route>
-      <DataContextProvider>
+      <Route path = '/login'>
+        <LoginReg/>
+      </Route>
         <Route path = '/types'>
           <PetTypeList/>
         </Route>
         <Route path = '/breeds'>
           <BreedDetails/>
         </Route>
+        </Switch>
       </DataContextProvider>
-      <Route path = '/login'>
-        <Login/>
-      </Route>
-      <Route path = '/register'>
-        <Register/>
-      </Route>
-     </Switch>
      </LoginContextProvider>
     </div>
     </Router>
