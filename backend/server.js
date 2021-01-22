@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import db from './config/db.js';
 import users from './routes/users.js';
+import types from './routes/types.js';
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true })
 .catch(err => console.log(err));
 
 //use routes
+app.use('/api/types', types);
 app.use('/api/users', users);
 
 const port = process.env.PORT || 5000;
