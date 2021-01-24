@@ -1,10 +1,15 @@
+//import dotenv from 'dotenv';
 import express from 'express';
+import { DB } from './config/db.js';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import db from './config/db.js';
 import users from './routes/users.js';
 import types from './routes/types.js';
+import breeds from './routes/breeds.js';
+
+
+//dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,13 +22,16 @@ app.use(cors());
 
 //connect to mongodb
 
-mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect(DB, { useNewUrlParser: true,
+                      useCreateIndex: true,
+                      useUnifiedTopology: true, })
 .then(()=> console.log('Mongo Connected...'))
 .catch(err => console.log(err));
 
 //use routes
 app.use('/api/types', types);
 app.use('/api/users', users);
+app.use('/api/breeds', breeds);
 
 const port = process.env.PORT || 5000;
 

@@ -45,14 +45,6 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <input
-          name = "password2"
-          type="password"
-          placeholder="repeat password"
-          value={registration.password2}
-          onChange={handleChange}
-          required
-        />
         <p className="error">{errorMessage}</p>
         <button className="register__button" onClick={sendRegistration}>
           Save

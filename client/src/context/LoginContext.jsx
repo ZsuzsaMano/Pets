@@ -4,9 +4,10 @@ const initContext = {
   registration: { name: '',
                   email: '',
                   password: '',
-                  password2: '', },
+                },
   login: { email: '',
-          password: '', },
+          password: '',
+        },
   errorMessage: '',
   isLoggedIn: false,
   //  sendRegistration: ()=> throw new Error('clearXY() not implemented')
