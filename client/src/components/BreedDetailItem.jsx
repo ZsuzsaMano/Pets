@@ -1,16 +1,21 @@
 import React from 'react';
 
-const BreedDetailItem = () => {
+const BreedDetailItem = ({ name,
+                          height,
+                           type,
+                         personality,
+                       img,
+                     toConsider, }) => {
   return (
     <div className="breedDetailItem">
-      <h2> Alaskan Malamute </h2>
+      <h2> {name}</h2>
       <div className="breedDetailItem__img">
-        <img src="" alt=""/>
+        <img src={img} alt={name} />
       </div>
       <ul>
-        <li>Height:</li>
-        <li>Personality:</li>
-        <li>To consider: </li>
+        <li>Height: {height}</li>
+        <li>Personality: {personality}</li>
+        <li>To consider: {toConsider} </li>
       </ul>
     </div>
   );

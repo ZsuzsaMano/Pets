@@ -1,0 +1,7 @@
+//main: App.scss
+
+.breeds{
+  @include flex( space-around, center, row)
+  flex-wrap: wrap;
+  margin: 0 1rem;
+}

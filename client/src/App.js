@@ -27,7 +27,7 @@ function App() {
         <Route path = '/types'>
           <PetTypeList/>
         </Route>
-        <Route path = '/breeds'>
+        <Route path = '/breeds/:type'>
           <BreedDetails/>
         </Route>
         </Switch>
