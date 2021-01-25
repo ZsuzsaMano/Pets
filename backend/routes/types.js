@@ -17,6 +17,7 @@ router.get('/', (req, res)=> {
 router.post('/', (req, res) => {
   const newType = new Type({
     name: req.body.name,
+    img: req.body.img,
   });
   newType.save().then(user=>res.json(user));
 });
