@@ -17,8 +17,12 @@ router.get('/', (req, res)=> {
 router.post('/', (req, res) => {
   const newUser = new User({
     name: req.body.name,
+    img: req.body.img,
     email: req.body.email,
     password: req.body.password,
+    myAnimals: req.body.myAnimals,
+    myComments: req.body.myComments,
+
   });
   newUser.save().then(user=>res.json(user));
 });

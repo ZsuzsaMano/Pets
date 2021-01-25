@@ -7,6 +7,9 @@ const userSchema = new Schema({
         required: [true, 'Username is required'],
         unique: true,
       },
+    img: {
+        type: String,
+      },
     email: {
         type: String,
         required: [true, 'Email is required'],
@@ -16,6 +19,13 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Password is required'],
       },
+    myAnimals: {
+        type: String,
+      },
+    myComments: {
+          type: String,
+        },
+
   },
    {
     timestamps: true,
