@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import axios from 'axios';
 
 const initContext = {
   registration: { name: '',
@@ -10,7 +11,9 @@ const initContext = {
         },
   errorMessage: '',
   isLoggedIn: false,
-  //  sendRegistration: ()=> throw new Error('clearXY() not implemented')
+  sendRegistration: () => {
+        throw new Error('sendRegistration() not implemented');
+      },
 };
 
 export const LoginContext = createContext(initContext);
@@ -20,8 +23,20 @@ const  LoginContextProvider = (props) => {
   const [login, setLogin] = useState(initContext.login);
   const [errorMessage, setErrorMessage] = useState(initContext.errorMessage);
   const [isLoggedIn, setIsLoggedIn] = useState(initContext.isLoggedIn);
-  const sendRegistration = () => {
-    console.log('reg sent');
+  const sendRegistration = e => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/signup/',
+    JSON.stringify({ name: registration.name,
+      email: registration.email,
+      password: registration.password,
+      password_confirmation: registration.password,
+    }), {
+      headers: {
+          'Content-Type': 'application/json',
+        },
+    })
+    .then(res => setIsLoggedIn(true))
+    .catch(err=>console.log(err));
   };
 
   const sendLogin = () => console.log('login sent');

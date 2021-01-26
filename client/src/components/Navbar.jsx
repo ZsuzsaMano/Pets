@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { LoginContext } from '../context/LoginContext';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+  const { isLoggedIn, registration } = useContext(LoginContext);
   return (
     <div className="navbar">
       <ul>
@@ -12,7 +14,7 @@ const Navbar = () => {
           <NavLink to="/types">Types</NavLink>
         </li>
         <li>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to={isLoggedIn ? '/profile' : '/login'}>{isLoggedIn ? registration.name : 'Login'}</NavLink>
         </li>
       </ul>
     </div>
