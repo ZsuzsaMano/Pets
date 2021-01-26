@@ -48,6 +48,7 @@ const  LoginContextProvider = (props) => {
                                     setRegistration,
                                     errorMessage,
                                     isLoggedIn,
+                                    setIsLoggedIn,
                                     sendRegistration, }}>
       {props.children}
     </LoginContext.Provider>
