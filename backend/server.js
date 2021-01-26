@@ -7,7 +7,7 @@ import cors from 'cors';
 import users from './routes/users.js';
 import types from './routes/types.js';
 import breeds from './routes/breeds.js';
-
+import authRoutes from './routes/auth.js';
 
 //dotenv.config();
 
@@ -32,6 +32,7 @@ mongoose.connect(DB, { useNewUrlParser: true,
 app.use('/api/types', types);
 app.use('/api/users', users);
 app.use('/api/breeds', breeds);
+app.use('/api', authRoutes);
 
 const port = process.env.PORT || 5000;
 
