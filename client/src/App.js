@@ -5,6 +5,7 @@ import { BrowserRouter as Router,
         Redirect,
         Switch } from 'react-router-dom';
 import Landing from './pages/Landing';
+import Profile from './pages/Profile';
 import PetTypeList from './pages/PetTypeList';
 import LoginReg from './pages/LoginReg';
 import BreedDetails from './pages/BreedDetails';
@@ -33,6 +34,9 @@ function App() {
       />
         <Route path = '/types'>
           <PetTypeList/>
+        </Route>
+        <Route path = '/profile'>
+          <Profile/>
         </Route>
         <Route path = '/breeds/:typeParam'>
           <BreedDetails/>
