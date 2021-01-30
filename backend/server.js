@@ -1,4 +1,4 @@
-//import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import express from 'express';
 import { DB } from './config/db.js';
 import mongoose from 'mongoose';
@@ -9,12 +9,13 @@ import types from './routes/types.js';
 import breeds from './routes/breeds.js';
 import authRoutes from './routes/auth.js';
 
-//dotenv.config();
+dotenv.config();
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(
   bodyParser.urlencoded({
+    limit: '30mb',
     extended: true,
   })
 );
@@ -25,8 +26,8 @@ app.use(cors());
 mongoose.connect(DB, { useNewUrlParser: true,
                       useCreateIndex: true,
                       useUnifiedTopology: true, })
-.then(()=> console.log('Mongo Connected...'))
-.catch(err => console.log(err));
+.then(()=> console.log('Mongo Connected...server running on port: ' + port))
+.catch(err => console.log(err.message));
 
 //use routes
 app.use('/api/types', types);
