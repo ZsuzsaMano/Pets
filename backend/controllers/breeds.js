@@ -1,17 +1,15 @@
+import Breed from '../models/breedSchema.js';
+
 export const getBreeds = (req, res)=> {
   Breed.find()
-  .then(breeds =>res.json(breeds));};
+  .then(breeds =>res.status(200).json(breeds))
+  .catch(err => res.status(404).json(err.message));};
 
 export const postBreed = (req, res) => {
-  const newBreed = new Breed({
-    name: req.body.name,
-    type: req.body.type,
-    img: req.body.img,
-    height: req.body.height,
-    personality: req.body.personality,
-    toConsider: req.body.toConsider,
-  });
-  newBreed.save().then(breed=>res.json(breed));
+  const newBreed = new Breed(req.body);
+  newBreed.save()
+  .then(breed=>res.status(201).json(breed))
+  .catch(err => res.status(409).json(err.message));
 };
 
 export const deleteBreed =  (req, res) => {
