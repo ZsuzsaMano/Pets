@@ -4,9 +4,7 @@ import { NavLink } from "react-router-dom";
 import exit from "../img/exit.png";
 
 const Navbar = () => {
-  const { user, setIsLoggedIn, isLoggedIn, registration } = useContext(
-    LoginContext
-  );
+  const { user, setIsLoggedIn, isLoggedIn } = useContext(LoginContext);
   return (
     <div className="navbar">
       <ul>
