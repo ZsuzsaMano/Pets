@@ -26,6 +26,10 @@ const breedSchema = new Schema({
     toConsider: {
           type: String,
         },
+    likeCount: {
+      type: Number,
+      default: 0,
+    },
   },
    {
     timestamps: true,

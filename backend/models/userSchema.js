@@ -20,12 +20,11 @@ const userSchema = new Schema({
         required: [true, 'Password is required'],
       },
     myAnimals: {
-        type: String,
+        type: [String],
       },
     myComments: {
-          type: String,
+          type: [String],
         },
-
   },
    {
     timestamps: true,
