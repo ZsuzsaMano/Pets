@@ -1,40 +1,42 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const breedSchema = new Schema({
+const breedSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: [true, 'Breedname is required'],
-        unique: true,
-      },
+      type: String,
+      required: [true, "Breedname is required"],
+      unique: true
+    },
     type: {
-        type: String,
-        required: [true, 'Type is required'],
-      },
+      type: String,
+      required: [true, "Type is required"]
+    },
     img: {
-        type: String,
-        required: [true, 'Picture is required'],
-      },
+      type: String,
+      required: [true, "Picture is required"]
+    },
     height: {
-          type: String,
-          required: [true, 'height is required'],
-        },
+      type: String,
+      required: [true, "height is required"]
+    },
     personality: {
-        type: String,
-        required: [true, 'Personality description is required'],
-      },
+      type: String,
+      required: [true, "Personality description is required"]
+    },
     toConsider: {
-          type: String,
-        },
+      type: String
+    },
     likeCount: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
-   {
-    timestamps: true,
-  });
+  {
+    timestamps: true
+  }
+);
 
-const Breed = mongoose.model('breed', breedSchema);
+const Breed = mongoose.model("breed", breedSchema);
 
 export default Breed;
