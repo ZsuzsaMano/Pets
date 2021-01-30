@@ -9,6 +9,7 @@ const initContext = {
   login: { email: '',
           password: '',
         },
+  user: '',
   errorMessage: '',
   isLoggedIn: false,
   sendRegistration: () => {
@@ -23,6 +24,8 @@ const  LoginContextProvider = (props) => {
   const [login, setLogin] = useState(initContext.login);
   const [errorMessage, setErrorMessage] = useState(initContext.errorMessage);
   const [isLoggedIn, setIsLoggedIn] = useState(initContext.isLoggedIn);
+  const [user, setUser] = useState(initContext.user);
+
   const sendRegistration = e => {
     e.preventDefault();
     axios.post('http://localhost:5000/api/signup/',
@@ -39,11 +42,30 @@ const  LoginContextProvider = (props) => {
     .catch(err=>console.log(err));
   };
 
-  const sendLogin = () => console.log('login sent');
+  const sendLogin = e => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/signin/',
+    JSON.stringify({
+      email: login.email,
+      password: login.password,
+    }), {
+      headers: {
+          'Content-Type': 'application/json',
+        },
+    })
+    .then(res => {
+      setUser(res.data.message);
+      setIsLoggedIn(true);
+    }
+    )
+    .catch(err=>console.log(err.message));
+  };
+
   return (
     <LoginContext.Provider value={{ login,
                                     setLogin,
                                     sendLogin,
+                                    user,
                                     registration,
                                     setRegistration,
                                     errorMessage,

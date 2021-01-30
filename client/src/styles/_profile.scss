@@ -2,4 +2,8 @@
 
 .profile{
   text-align: center;
+  &__personal{
+    border: 1px solid black;
+    padding: 1rem;
+  }
 }
