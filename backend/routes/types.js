@@ -1,36 +1,22 @@
 import express from 'express';
 import Type from '../models/typeSchema.js';
-
+import { getTypes, postType, deleteType } from '../controllers/types.js';
 const router = express.Router();
 
 //@route GET api/type
 //@desc GET All type
 //@access Public
-router.get('/', (req, res)=> {
-  Type.find()
-  .then(types =>res.json(types));
-});
+router.get('/', getTypes);
 
 //@route POST api/types
 //@desc Create a type
 //@access Public
-router.post('/', (req, res) => {
-  const newType = new Type({
-    name: req.body.name,
-    img: req.body.img,
-  });
-  newType.save().then(user=>res.json(user));
-});
+router.post('/', postType);
 
 //@route DELETE api/types/:id
 //@desc DELETE a type
 //@access Public
-router.delete('/:id', (req, res) => {
-  Type.findById(req.params.id)
-  .then(type => type.remove()
-  .then(()=> res.json({ success: true })))
-  .catch(err=> res.status(404).json({ success: false }));
-})
+router.delete('/:id', deleteType)
 ;
 
 export default router;
