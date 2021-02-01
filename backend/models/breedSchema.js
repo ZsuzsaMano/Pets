@@ -13,12 +13,12 @@ const breedSchema = new Schema(
       required: [true, "Type is required"]
     },
     img: {
-      type: String,
-      required: [true, "Picture is required"]
+      type: String
+      //required: [true, "Picture is required"]
     },
-    height: {
+    size: {
       type: String,
-      required: [true, "height is required"]
+      required: [true, "size is required"]
     },
     personality: {
       type: String,
