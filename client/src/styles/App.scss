@@ -1,22 +1,32 @@
-@mixin flex($justify, $align, $direction){
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin flex($justify, $align, $direction) {
   display: flex;
   justify-content: $justify;
   align-items: $align;
-  flex-direction: $direction
+  flex-direction: $direction;
 }
 
-a{
+.hide {
+  display: none;
+}
+
+a {
   text-decoration: none;
   color: inherit;
 }
 
-
-@import 'profile';
-@import 'landing';
-@import 'navbar';
-@import 'petTypeList';
-@import 'petTypeListItem';
-@import 'login';
-@import 'loginreg';
-@import 'breedDetailItem';
-@import 'breedDetails';
+@import "profile";
+@import "landing";
+@import "navbar";
+@import "petTypeList";
+@import "petTypeListItem";
+@import "login";
+@import "loginreg";
+@import "breedDetailItem";
+@import "breedDetails";
+@import "postBreed";

@@ -4,7 +4,14 @@ import axios from "axios";
 const initContext = {
   loading: false,
   types: [],
-  breeds: []
+  breeds: [],
+  postBreed: {
+    type: "",
+    size: "",
+    img: "",
+    personality: "",
+    toConsider: ""
+  }
 };
 
 export const DataContext = createContext(initContext);
@@ -13,19 +20,24 @@ const DataContextProvider = props => {
   const [loading, setLoading] = useState(initContext.loading);
   const [types, setTypes] = useState(initContext.types);
   const [breeds, setBreeds] = useState(initContext.breeds);
+  const [postBreed, setPostBreed] = useState(initContext.postBreed);
 
   const getTypes = () => {
+    setLoading(true);
     axios
       .get("http://localhost:5000/api/types")
       .then(res => setTypes(res.data))
       .catch(err => console.log(err));
+    setLoading(false);
   };
 
   const getBreeds = () => {
+    setLoading(true);
     axios
       .get("http://localhost:5000/api/breeds")
       .then(res => setBreeds(res.data))
       .catch(err => console.log(err));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -37,7 +49,9 @@ const DataContextProvider = props => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ loading, types, breeds }}>
+    <DataContext.Provider
+      value={{ loading, types, breeds, getBreeds, postBreed, setPostBreed }}
+    >
       {props.children}
     </DataContext.Provider>
   );

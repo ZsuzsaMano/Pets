@@ -1,0 +1,45 @@
+//main: App.scss
+
+.postBreed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000dd;
+  z-index: 99;
+  h3 {
+    text-align: center;
+    color: white;
+  }
+  form {
+    padding: 0.5rem;
+    border-radius: 2px;
+    min-height: 450px;
+    max-width: 250px;
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex(space-around, center, column);
+    background: #010101;
+    box-shadow: 0 27px 55px 0 rgba(250, 250, 250, 0.3),
+      0 17px 17px 0 rgba(250, 250, 250, 0.15);
+  }
+  label {
+    color: white;
+    padding: 0 0.3rem;
+    font-size: 0.8rem;
+  }
+  input,
+  textarea {
+    padding: 0.2rem;
+    width: 100%;
+  }
+  button {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    cursor: pointer;
+  }
+}
