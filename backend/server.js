@@ -1,3 +1,4 @@
+import path from "path";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -36,6 +37,13 @@ app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/breeds", breeds);
 app.use("/api", authRoutes);
+
+//render client
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(`${__dirname}`, "..", "client", "build", "index.html")
+  );
+});
 
 const port = process.env.PORT || 5000;
 
