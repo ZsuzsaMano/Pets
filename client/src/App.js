@@ -6,6 +6,7 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
+import PostBreed from "./components/PostBreed";
 import Landing from "./pages/Landing";
 import Profile from "./pages/Profile";
 import PetTypeList from "./pages/PetTypeList";
@@ -31,6 +32,13 @@ function App() {
               path="/login"
               render={() => {
                 return !isLoggedIn ? <LoginReg /> : <Redirect to="/types" />;
+              }}
+            />
+            <Route
+              exact
+              path="/addPet"
+              render={() => {
+                return isLoggedIn ? <PostBreed /> : <Redirect to="/login" />;
               }}
             />
             <Route path="/types">

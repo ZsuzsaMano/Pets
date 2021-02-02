@@ -15,6 +15,9 @@ const Navbar = () => {
           <NavLink to="/types">Types</NavLink>
         </li>
         <li>
+          <NavLink to="/addPet">Add Pet</NavLink>
+        </li>
+        <li>
           <NavLink to={isLoggedIn ? "/profile" : "/login"}>
             {isLoggedIn ? user.name : "Login"}
           </NavLink>

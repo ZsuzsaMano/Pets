@@ -4,7 +4,6 @@ import { DataContext } from "../context/DataContext";
 
 const PostBreed = props => {
   const { getBreeds, postBreed, setPostBreed } = useContext(DataContext);
-  const [showFrom, setShowFrom] = useState(false);
 
   const addBreed = e => {
     e.preventDefault();
@@ -27,7 +26,6 @@ const PostBreed = props => {
       )
       .then(res => getBreeds())
       .catch(err => console.log(err));
-    setShowFrom(false);
   };
 
   const handleChange = e => {
@@ -38,10 +36,11 @@ const PostBreed = props => {
     }));
   };
   return (
-    <div className={showFrom ? "postBreed" : "postBreed hide"}>
+    <div className="postBreed">
       <form action="" className="postBreed__form">
         <h3 className="postBreed__title">Add your Pet</h3>
-        <select name="type" type="text" onChange={handleChange}>
+        <select name="type" type="text" onChange={handleChange} required>
+          <option value="">Choose type...</option>
           <option value="dogs">Dogs</option>
           <option value="cats">Cats</option>
           <option value="small_animals">Small Animals</option>
@@ -62,7 +61,13 @@ const PostBreed = props => {
         />
         <label htmlFor="img">
           image
-          <input name="img" type="file" accept="image/*" required />
+          <input
+            name="img"
+            type="file"
+            accept="image/*"
+            onChange={handleChange}
+            required
+          />
         </label>
         <textarea
           name="personality"
