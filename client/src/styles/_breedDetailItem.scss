@@ -11,6 +11,9 @@
   background-color: #fafafa;
   margin: 1rem;
   padding: 1rem;
+  header {
+    @include flex(space-around, center, row);
+  }
   h2 {
     text-align: center;
   }

@@ -1,14 +1,20 @@
-import React from 'react';
+import React from "react";
+import ToggleFavorite from "../components/ToggleFavorite";
 
-const BreedDetailItem = ({ name,
-                          height,
-                           type,
-                         personality,
-                       img,
-                     toConsider, }) => {
+const BreedDetailItem = ({
+  name,
+  height,
+  type,
+  personality,
+  img,
+  toConsider
+}) => {
   return (
     <div className="breedDetailItem">
-      <h2> {name}</h2>
+      <header>
+        <h2> {name}</h2>
+        <ToggleFavorite />
+      </header>
       <div className="breedDetailItem__img">
         <img src={img} alt={name} />
       </div>
