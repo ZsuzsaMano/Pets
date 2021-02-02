@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import express from "express";
-import { DB } from "./config/db.js";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -24,7 +23,7 @@ app.use(cors());
 //connect to mongodb
 
 mongoose
-  .connect(DB, {
+  .connect(process.env.DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
