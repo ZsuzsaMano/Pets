@@ -2,6 +2,7 @@ import React from "react";
 import ToggleFavorite from "../components/ToggleFavorite";
 
 const BreedDetailItem = ({
+  id,
   name,
   height,
   type,
@@ -13,7 +14,7 @@ const BreedDetailItem = ({
     <div className="breedDetailItem">
       <header>
         <h2> {name}</h2>
-        <ToggleFavorite />
+        <ToggleFavorite id={id} name={name} image={img} />
       </header>
       <div className="breedDetailItem__img">
         <img src={img} alt={name} />

@@ -7,6 +7,8 @@ const initContext = {
   user: "",
   errorMessage: "",
   isLoggedIn: false,
+  myFavorites: [],
+  myComments: [],
   sendRegistration: () => {
     throw new Error("sendRegistration() not implemented");
   }
@@ -20,6 +22,8 @@ const LoginContextProvider = props => {
   const [errorMessage, setErrorMessage] = useState(initContext.errorMessage);
   const [isLoggedIn, setIsLoggedIn] = useState(initContext.isLoggedIn);
   const [user, setUser] = useState(initContext.user);
+  const [myFavorites, setMyFavorites] = useState(initContext.myFavorites);
+  const [myComments, setMyComments] = useState(initContext.myComments);
 
   const sendRegistration = e => {
     e.preventDefault();
@@ -76,7 +80,9 @@ const LoginContextProvider = props => {
         errorMessage,
         isLoggedIn,
         setIsLoggedIn,
-        sendRegistration
+        sendRegistration,
+        myFavorites,
+        setMyFavorites
       }}
     >
       {props.children}

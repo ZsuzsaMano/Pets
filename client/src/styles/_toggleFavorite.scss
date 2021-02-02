@@ -1,7 +1,9 @@
 //main: App.scss
 
 .toggleFavorite {
-  svg {
-    fill: #c6c6c6;
-  }
+  fill: #c6c6c6;
+}
+
+.toggleFavorite-active {
+  fill: #ff6363ed;
 }

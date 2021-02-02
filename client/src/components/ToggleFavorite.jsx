@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { LoginContext } from "../context/LoginContext";
 
-const ToggleFavorite = props => {
+const ToggleFavorite = ({ id, name, image }) => {
+  const { myFavorites, setMyFavorites, isLoggedin } = useContext(LoginContext);
+  const [selected, toggleSelected] = useState(false);
+
+  const toggleFavorite = () => {
+    if (myFavorites.find(inv => inv.id === id)) {
+      setMyFavorites(myFavorites.filter(item => item.id !== id));
+      toggleSelected(false);
+    } else {
+      setMyFavorites(myFavorites => [
+        ...myFavorites,
+        { id: id, name: name, image: image }
+      ]);
+      toggleSelected(true);
+    }
+  };
+
+  useEffect(() => {
+    if (myFavorites.find(inv => inv.id === id)) {
+      toggleSelected(true);
+    } else {
+      toggleSelected(false);
+    }
+  }, []);
+
   return (
-    <div className="toggleFavorite">
+    <div>
       <svg
+        className={`toggleFavorite ${selected ? "toggleFavorite-active" : ""}`}
+        onClick={toggleFavorite}
         xmlns="http://www.w3.org/2000/svg"
         id="svg1"
         version="1.1"

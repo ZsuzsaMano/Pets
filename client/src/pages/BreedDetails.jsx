@@ -12,6 +12,7 @@ const BreadDetails = () => {
         return (
           breed.type === typeParam && (
             <BreedDetailItem
+              id={breed._id}
               key={breed._id}
               name={breed.name}
               type={breed.type}
