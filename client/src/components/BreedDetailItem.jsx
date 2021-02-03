@@ -1,5 +1,6 @@
 import React from "react";
 import ToggleFavorite from "../components/ToggleFavorite";
+import Comments from "../components/Comments";
 
 const BreedDetailItem = ({
   id,
@@ -24,6 +25,7 @@ const BreedDetailItem = ({
         <li>Personality: {personality}</li>
         <li>To consider: {toConsider} </li>
       </ul>
+      <Comments />
     </div>
   );
 };
