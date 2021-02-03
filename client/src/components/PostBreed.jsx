@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { DataContext } from "../context/DataContext";
 
 const PostBreed = props => {
+  const history = useHistory();
   const { getBreeds, postBreed, setPostBreed } = useContext(DataContext);
 
   const addBreed = e => {
@@ -24,7 +26,10 @@ const PostBreed = props => {
           }
         }
       )
-      .then(res => getBreeds())
+      .then(res => {
+        getBreeds();
+        history.push("/breeds/" + postBreed.type);
+      })
       .catch(err => console.log(err));
   };
 
