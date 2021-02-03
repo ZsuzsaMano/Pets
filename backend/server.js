@@ -41,9 +41,12 @@ app.use("/api", authRoutes);
 //render client
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));
 app.get("/", (req, res) => {
-  res.sendFile(
-    path.join(`${__dirname}`, "..", "client", "build", "index.html")
-  );
+  res
+    .set(
+      "Content-Security-Policy",
+      "default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'"
+    )
+    .sendFile(path.join(`${__dirname}`, "..", "client", "build", "index.html"));
 });
 
 const port = process.env.PORT || 5000;
