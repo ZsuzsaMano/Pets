@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZsuzsaMano/Pets/issues"
   },
+  "engines": {
+    "node": "15.x"
+  },
   "homepage": "https://github.com/ZsuzsaMano/Pets#readme"
 }
