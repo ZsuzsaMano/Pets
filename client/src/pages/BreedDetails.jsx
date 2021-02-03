@@ -16,7 +16,7 @@ const BreadDetails = () => {
               key={breed._id}
               name={breed.name}
               type={breed.type}
-              height={breed.height}
+              size={breed.size}
               img={breed.img}
               personality={breed.personality}
               toConsider={breed.toConsider}

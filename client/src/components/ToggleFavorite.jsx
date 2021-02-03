@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
 
-const ToggleFavorite = ({ id, name, image }) => {
+const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
   const { myFavorites, setMyFavorites, isLoggedin } = useContext(LoginContext);
   const [selected, toggleSelected] = useState(false);
 
@@ -12,7 +12,14 @@ const ToggleFavorite = ({ id, name, image }) => {
     } else {
       setMyFavorites(myFavorites => [
         ...myFavorites,
-        { id: id, name: name, image: image }
+        {
+          id: id,
+          name: name,
+          image: image,
+          size: size,
+          personality: personality,
+          toConsider: toConsider
+        }
       ]);
       toggleSelected(true);
     }
