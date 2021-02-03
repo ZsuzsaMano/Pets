@@ -40,7 +40,7 @@ app.use("/api", authRoutes);
 
 //render client
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res
     .set(
       "Content-Security-Policy",

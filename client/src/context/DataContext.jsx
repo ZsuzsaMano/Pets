@@ -42,16 +42,20 @@ const DataContextProvider = props => {
   };
 
   useEffect(() => {
-    getTypes();
-  }, []);
-
-  useEffect(() => {
     getBreeds();
   }, []);
 
   return (
     <DataContext.Provider
-      value={{ loading, types, breeds, getBreeds, postBreed, setPostBreed }}
+      value={{
+        loading,
+        types,
+        breeds,
+        getBreeds,
+        getTypes,
+        postBreed,
+        setPostBreed
+      }}
     >
       {props.children}
     </DataContext.Provider>

@@ -1,21 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import PetTypeListItem from "../components/PetTypeListItem";
 import { DataContext } from "../context/DataContext";
 
 const PetTypeList = () => {
-  const { types } = useContext(DataContext);
+  const { types, getTypes } = useContext(DataContext);
+
+  useEffect(() => {
+    getTypes();
+  }, []);
 
   return (
     <div className="petTypeList">
-      {types.map(petType => {
-        return (
-          <PetTypeListItem
-            key={petType._id}
-            type={petType.type}
-            img={petType.img}
-          />
-        );
-      })}
+      {types &&
+        types.map(petType => {
+          return (
+            <PetTypeListItem
+              key={petType._id}
+              type={petType.type}
+              img={petType.img}
+            />
+          );
+        })}
     </div>
   );
 };
