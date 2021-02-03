@@ -32,6 +32,9 @@ const breedSchema = new Schema(
       default: 0
     }
   },
+  comments: {
+    type: [String],
+  }
   {
     timestamps: true
   }

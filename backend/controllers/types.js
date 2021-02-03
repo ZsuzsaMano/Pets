@@ -7,10 +7,7 @@ export const getTypes = (req, res) => {
 };
 
 export const postType = (req, res) => {
-  const newType = new Type({
-    name: req.body.name,
-    img: req.body.img
-  });
+  const newType = new Type({req.body});
   newType.save().then(user => res.json(user));
 };
 

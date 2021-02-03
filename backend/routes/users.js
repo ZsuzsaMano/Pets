@@ -14,15 +14,10 @@ router.get("/", (req, res) => {
 //@desc Create an user
 //@access Public
 router.post("/", (req, res) => {
-  const newUser = new User({
-    name: req.body.name,
-    img: req.body.img,
-    email: req.body.email,
-    password: req.body.password,
-    myAnimals: req.body.myAnimals,
-    myComments: req.body.myComments
-  });
-  newUser.save().then(user => res.json(user));
+  const newUser = new User({req.body});
+  newUser.save()
+  .then(user => res.json(user))
+  .catch(err => res.status(409).json(err.message));
 });
 
 //@route DELETE api/users/:id
