@@ -25,7 +25,7 @@ const DataContextProvider = props => {
   const getTypes = () => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/api/types")
+      .get("https://petpersonalities.herokuapp.com/api/types")
       .then(res => setTypes(res.data))
       .catch(err => console.log(err));
     setLoading(false);
@@ -34,7 +34,7 @@ const DataContextProvider = props => {
   const getBreeds = () => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/api/breeds")
+      .get("https://petpersonalities.herokuapp.com/api/breeds")
       .then(res => setBreeds(res.data))
       .catch(err => console.log(err));
     setLoading(false);
