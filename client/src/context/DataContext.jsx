@@ -1,5 +1,9 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+import { config } from "../config.js";
+
+dotenv.config();
 
 const initContext = {
   loading: false,
