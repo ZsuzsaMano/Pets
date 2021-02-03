@@ -1,9 +1,9 @@
 //main: App.scss
 
 .navbar {
-  min-height: 8vh;
   ul {
     @include flex(space-around, center, row);
     list-style: none;
+    min-height: 8vh;
   }
 }
