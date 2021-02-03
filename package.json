@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run server --prefix backend",
-    "postinstall": "npm install --prefix backend"
+    "postinstall": "npm install --prefix backend && npm install --prefix client"
   },
   "repository": {
     "type": "git",

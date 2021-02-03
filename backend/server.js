@@ -8,6 +8,7 @@ import users from "./routes/users.js";
 import types from "./routes/types.js";
 import breeds from "./routes/breeds.js";
 import authRoutes from "./routes/auth.js";
+const __dirname = path.resolve();
 
 dotenv.config();
 
@@ -22,7 +23,6 @@ app.use(
 app.use(cors());
 
 //connect to mongodb
-
 mongoose
   .connect(process.env.DB, {
     useNewUrlParser: true,
