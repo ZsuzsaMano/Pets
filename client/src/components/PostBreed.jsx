@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { DataContext } from "../context/DataContext";
+import { config } from "../config.js";
 
 const PostBreed = props => {
   const history = useHistory();
@@ -11,7 +12,7 @@ const PostBreed = props => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/breeds/",
+        `${config.serverURL}/api/breeds`,
         JSON.stringify({
           name: postBreed.name,
           type: postBreed.type,

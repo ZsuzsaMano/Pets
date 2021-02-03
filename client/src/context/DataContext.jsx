@@ -1,9 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
 import { config } from "../config.js";
-
-dotenv.config();
 
 const initContext = {
   loading: false,
@@ -29,7 +26,7 @@ const DataContextProvider = props => {
   const getTypes = () => {
     setLoading(true);
     axios
-      .get("https://petpersonalities.herokuapp.com/api/types")
+      .get(`${config.serverURL}/api/types`)
       .then(res => setTypes(res.data))
       .catch(err => console.log(err));
     setLoading(false);
@@ -38,7 +35,7 @@ const DataContextProvider = props => {
   const getBreeds = () => {
     setLoading(true);
     axios
-      .get("https://petpersonalities.herokuapp.com/api/breeds")
+      .get(`${config.serverURL}/api/breeds`)
       .then(res => setBreeds(res.data))
       .catch(err => console.log(err));
     setLoading(false);
