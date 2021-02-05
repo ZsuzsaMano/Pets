@@ -33,10 +33,10 @@ mongoose
   .catch(err => console.log(err.message));
 
 //use routes
+app.use("/api", authRoutes);
 app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/breeds", breeds);
-app.use("/api", authRoutes);
 
 //render client
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));

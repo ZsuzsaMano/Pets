@@ -14,6 +14,11 @@ router.get("/", getUsers);
 //@access Public
 router.post("/");
 
+//@route PATCH api/users
+//@desc update an user
+//@access Public
+//router.patch("/");
+
 //@route DELETE api/users/:id
 //@desc DELETE a user
 //@access Public

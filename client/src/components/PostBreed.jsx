@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { DataContext } from "../context/DataContext";
@@ -41,9 +41,19 @@ const PostBreed = props => {
       [name]: value
     }));
   };
+
+  const handleFileChange = e => {
+    const name = e.target.name;
+    const value = e.target.files[0].name;
+    setPostBreed(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
   return (
     <div className="postBreed">
-      <form action="" className="postBreed__form">
+      <form action="" className="postBreed__form" enctype="multipart/form-data">
         <h3 className="postBreed__title">Add your Pet</h3>
         <select name="type" type="text" onChange={handleChange} required>
           <option value="">Choose type...</option>
@@ -71,7 +81,7 @@ const PostBreed = props => {
             name="img"
             type="file"
             accept="image/*"
-            onChange={handleChange}
+            onChange={handleFileChange}
             required
           />
         </label>

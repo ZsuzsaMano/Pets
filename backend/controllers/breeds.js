@@ -7,7 +7,14 @@ export const getBreeds = (req, res) => {
 };
 
 export const postBreed = (req, res) => {
-  const newBreed = new Breed(req.body);
+  const newBreed = new Breed({
+    name: req.body.name,
+    type: req.body.type,
+    size: req.body.size,
+    img: req.file,
+    personality: req.body.personality,
+    toConsider: req.body.toConsider
+  });
   newBreed
     .save()
     .then(breed => res.status(201).json(breed))
