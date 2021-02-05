@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
-import moment from "moment";
-
 const CommentMessage = ({ message, chatName, date }) => {
   const { user } = useContext(LoginContext);
-  //const dateFrom = moment(date).fromNow();
+
   return (
     <div className={chatName === user.name ? " myMessage" : "message"}>
       <div className="message__head">

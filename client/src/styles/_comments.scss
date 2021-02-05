@@ -1,9 +1,9 @@
 //main: App.scss
 
 .comments {
-  background: #dee1e394;
   border-radius: 4px;
   .messages-open {
+    background: #dee1e394;
     max-height: 400px;
     overflow-y: scroll;
     transition: all 800ms cubic-bezier(0.19, 1, 0.56, 1);
@@ -13,8 +13,19 @@
     overflow-y: hidden;
     transition: all 800ms cubic-bezier(0.19, 1, 0.56, 1);
   }
+  .post-comment {
+    textarea {
+      width: 100%;
+      border-radius: 4px;
+      padding: 3px;
+    }
+    button {
+      width: 100%;
+    }
+  }
   .open-comments {
     padding: 3px;
+    margin-top: 20px;
     font-size: 0.7rem;
     color: blue;
     text-align: right;

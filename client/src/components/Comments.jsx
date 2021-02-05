@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CommentMessage from "./CommentMessage";
+import PostComment from "./PostComment";
 
 const Comments = props => {
   const [showComments, toggleShowComments] = useState(false);
@@ -44,6 +45,7 @@ const Comments = props => {
           showComments ? "messages messages-open" : "messages messages-closed"
         }
       >
+        <PostComment />
         {messages.map(message => (
           <CommentMessage
             key={message.id}
