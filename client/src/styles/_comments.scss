@@ -1,9 +1,48 @@
 //main: App.scss
 
 .comments {
-  p {
+  background: #dee1e394;
+  border-radius: 4px;
+  .messages-open {
+    max-height: 400px;
+    overflow-y: scroll;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.56, 1);
+  }
+  .messages-closed {
+    max-height: 0px;
+    overflow-y: hidden;
+    transition: all 800ms cubic-bezier(0.19, 1, 0.56, 1);
+  }
+  .open-comments {
+    padding: 3px;
     font-size: 0.7rem;
     color: blue;
     text-align: right;
+  }
+  .message {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    margin: 15px 5px;
+
+    &__head {
+      background: #fcfcfc;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e5e5;
+      overflow: hidden;
+      -webkit-border-radius: 4px 4px 0 0;
+      -moz-border-radius: 4px 4px 0 0;
+      border-radius: 4px 4px 0 0;
+      font-size: 0.8rem;
+      @include flex(space-between, center, row);
+    }
+    &__text {
+      background: #fff;
+      padding: 12px;
+      font-size: 15px;
+      color: #595959;
+      -webkit-border-radius: 0 0 4px 4px;
+      -moz-border-radius: 0 0 4px 4px;
+      border-radius: 0 0 4px 4px;
+      font-size: 0.9rem;
+    }
   }
 }
