@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CommentMessage from "./CommentMessage";
 
 const Comments = props => {
-  const [showComments, toggleShowComments] = useState(true);
+  const [showComments, toggleShowComments] = useState(false);
 
   const toggleComments = () => {
     toggleShowComments(!showComments);
