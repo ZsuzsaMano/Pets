@@ -8,7 +8,7 @@ export const getTypes = (req, res) => {
 
 export const postType = (req, res) => {
   const newType = new Type(req.body);
-  newType.save().then(user => res.json(user));
+  newType.save().then(type => res.json(type));
 };
 
 export const deleteType = (req, res) => {

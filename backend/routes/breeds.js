@@ -16,8 +16,8 @@ router.get("/", getBreeds);
 //@access Public
 router.post("/", upload.single("img"), postBreed);
 
-//@route DELETE api/users/:id
-//@desc DELETE a user
+//@route DELETE api/breed/:id
+//@desc DELETE a breed
 //@access Public
 router.delete("/:id", deleteBreed);
 

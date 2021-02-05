@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import users from "./routes/users.js";
 import types from "./routes/types.js";
+import comments from "./routes/comments.js";
 import breeds from "./routes/breeds.js";
 import authRoutes from "./routes/auth.js";
 const __dirname = path.resolve();
@@ -37,6 +38,7 @@ app.use("/api", authRoutes);
 app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/breeds", breeds);
+app.use("/api/comments", comments);
 
 //render client
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));
