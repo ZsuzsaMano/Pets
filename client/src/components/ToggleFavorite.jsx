@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
 
 const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
-  const { myFavorites, setMyFavorites, isLoggedin } = useContext(LoginContext);
+  const { myFavorites, setMyFavorites } = useContext(LoginContext);
   const [selected, toggleSelected] = useState(false);
 
   const toggleFavorite = () => {
@@ -41,11 +41,9 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
         xmlns="http://www.w3.org/2000/svg"
         id="svg1"
         version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
         width="36"
         height="36"
         viewBox="0 0 475.82 442.01"
-        version="1.0"
       >
         <g id="layer1" transform="translate(-134.07 -225.8)">
           <path

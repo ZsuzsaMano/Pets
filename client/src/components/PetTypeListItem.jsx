@@ -1,5 +1,4 @@
 import React from "react";
-import ToggleFavorite from "./ToggleFavorite";
 import { Link } from "react-router-dom";
 
 const PetTypeListItem = ({ id, type, img }) => {
