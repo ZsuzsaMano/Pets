@@ -8,9 +8,9 @@ const commentSchema = new Schema(
       required: [true, "name is required"],
       unique: true
     },
-    message: {
+    comment: {
       type: String,
-      required: [true, "message is required"]
+      required: [true, "comment is required"]
     },
     userId: {
       type: String

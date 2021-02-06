@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CommentMessage from "./CommentMessage";
 import PostComment from "./PostComment";
 
-const Comments = props => {
+const Comments = ({ breedId }) => {
   const [showComments, toggleShowComments] = useState(false);
 
   const toggleComments = () => {
@@ -45,7 +45,7 @@ const Comments = props => {
           showComments ? "messages messages-open" : "messages messages-closed"
         }
       >
-        <PostComment />
+        <PostComment breedId={breedId} />
         {messages.map(message => (
           <CommentMessage
             key={message.id}
