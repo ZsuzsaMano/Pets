@@ -10,7 +10,7 @@ const CommentMessage = ({ message, chatName, date }) => {
         <p className="bubble__name">
           {chatName === user.name ? "Me" : chatName}
         </p>
-        <p className="bubble__time">{date}</p>
+        <p className="bubble__time">{date.slice(0, 10)}</p>
       </div>
       <p className="message__text">{message}</p>
     </div>

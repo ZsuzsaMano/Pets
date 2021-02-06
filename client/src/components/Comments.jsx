@@ -1,40 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CommentMessage from "./CommentMessage";
 import PostComment from "./PostComment";
+import axios from "axios";
+import { config } from "../config.js";
 
 const Comments = ({ breedId }) => {
   const [showComments, toggleShowComments] = useState(false);
-
+  const [comments, setComments] = useState([]);
   const toggleComments = () => {
     toggleShowComments(!showComments);
   };
-  const messages = [
-    {
-      id: 1,
-      chatName: "dev",
-      date: "2021.01.30",
-      message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-    },
-    {
-      id: 2,
-      chatName: "dev2",
-      date: "2021.02.04",
-      message: "Lorem ipsum dolor sit amet. Lorem ipsum dolor."
-    },
-    {
-      id: 3,
-      chatName: "dev3",
-      date: "2021.02.05",
-      message: "Lorem ipsum dolor sit amet."
-    },
-    {
-      id: 4,
-      chatName: "dev4",
-      date: "2021.02.06",
-      message:
-        "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-    }
-  ];
+
+  const getComments = () => {
+    axios
+      .get(`${config.serverURL}/api/comments`)
+      .then(res => setComments(res.data))
+      .catch(err => console.log(err.message));
+  };
+
+  useEffect(() => {
+    getComments();
+  }, []);
   return (
     <div className="comments">
       <p className="open-comments" onClick={toggleComments}>
@@ -45,15 +31,19 @@ const Comments = ({ breedId }) => {
           showComments ? "messages messages-open" : "messages messages-closed"
         }
       >
-        <PostComment breedId={breedId} />
-        {messages.map(message => (
-          <CommentMessage
-            key={message.id}
-            chatName={message.chatName}
-            date={message.date}
-            message={message.message}
-          />
-        ))}
+        <PostComment breedId={breedId} getComments={getComments} />
+
+        {comments.map(
+          comment =>
+            breedId === comment.breedId && (
+              <CommentMessage
+                key={comment.id}
+                chatName={comment.chatName}
+                date={comment.createdAt}
+                message={comment.comment}
+              />
+            )
+        )}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 import { LoginContext } from "../context/LoginContext";
 import { config } from "../config.js";
 
-const PostComment = ({ breedId }) => {
+const PostComment = ({ breedId, getComments }) => {
   const { user, isLoggedIn } = useContext(LoginContext);
   const [postComment, setPostComment] = useState("");
 
@@ -27,7 +27,7 @@ const PostComment = ({ breedId }) => {
           }
         }
       )
-      .then(res => console.log("comment sent"))
+      .then(res => getComments())
       .catch(err => console.log(err.message));
     setPostComment("");
   };

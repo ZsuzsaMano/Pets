@@ -5,8 +5,7 @@ const commentSchema = new Schema(
   {
     chatName: {
       type: String,
-      required: [true, "name is required"],
-      unique: true
+      required: [true, "name is required"]
     },
     comment: {
       type: String,
