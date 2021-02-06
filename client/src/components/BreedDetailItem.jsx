@@ -32,7 +32,7 @@ const BreedDetailItem = ({
         <li>Personality: {personality}</li>
         <li>To consider: {toConsider} </li>
       </ul>
-      <Comments breedId={id} />
+      <Comments breedId={id} breedName={name} />
     </div>
   );
 };

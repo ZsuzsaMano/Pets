@@ -4,7 +4,7 @@ import axios from "axios";
 import { LoginContext } from "../context/LoginContext";
 import { config } from "../config.js";
 
-const PostComment = ({ breedId, getComments }) => {
+const PostComment = ({ breedId, breedName, getComments }) => {
   const { user, isLoggedIn } = useContext(LoginContext);
   const [postComment, setPostComment] = useState("");
 
@@ -19,7 +19,8 @@ const PostComment = ({ breedId, getComments }) => {
           chatName: user.name,
           comment: postComment,
           userId: user._id,
-          breedId: breedId
+          breedId: breedId,
+          breedName: breedName
         }),
         {
           headers: {

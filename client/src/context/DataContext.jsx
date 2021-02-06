@@ -6,6 +6,7 @@ const initContext = {
   loading: false,
   types: [],
   breeds: [],
+  comments: [],
   postBreed: {
     type: "",
     size: "",
@@ -22,6 +23,7 @@ const DataContextProvider = props => {
   const [types, setTypes] = useState(initContext.types);
   const [breeds, setBreeds] = useState(initContext.breeds);
   const [postBreed, setPostBreed] = useState(initContext.postBreed);
+  const [comments, setComments] = useState(initContext.comments);
 
   const getTypes = () => {
     setLoading(true);
@@ -41,6 +43,17 @@ const DataContextProvider = props => {
     setLoading(false);
   };
 
+  const getComments = () => {
+    axios
+      .get(`${config.serverURL}/api/comments`)
+      .then(res => setComments(res.data))
+      .catch(err => console.log(err.message));
+  };
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
   useEffect(() => {
     getBreeds();
   }, []);
@@ -54,7 +67,10 @@ const DataContextProvider = props => {
         getBreeds,
         getTypes,
         postBreed,
-        setPostBreed
+        setPostBreed,
+        comments,
+        setComments,
+        getComments
       }}
     >
       {props.children}

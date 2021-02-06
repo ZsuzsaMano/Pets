@@ -1,9 +1,16 @@
 //main: App.scss
 
-.profile{
+.profile {
   text-align: center;
-  &__personal{
+  &__personal {
     border: 1px solid black;
     padding: 1rem;
   }
+}
+
+.profile-comments {
+  max-width: 300px;
+  padding: 1rem;
+  background-color: #dee1e394;
+  margin: 5px auto;
 }

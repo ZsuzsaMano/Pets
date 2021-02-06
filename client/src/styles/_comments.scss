@@ -5,6 +5,7 @@
   .messages-open {
     background: #dee1e394;
     max-height: 400px;
+    padding: 3px;
     overflow-y: scroll;
     transition: all 800ms cubic-bezier(0.19, 1, 0.56, 1);
   }
@@ -21,6 +22,7 @@
     }
     button {
       width: 100%;
+      margin-bottom: 10px;
     }
   }
   .open-comments {
@@ -55,5 +57,9 @@
       border-radius: 0 0 4px 4px;
       font-size: 0.9rem;
     }
+  }
+  .post-comment__name {
+    font-size: 0.8rem;
+    padding: 4px;
   }
 }

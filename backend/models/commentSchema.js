@@ -16,6 +16,9 @@ const commentSchema = new Schema(
     },
     breedId: {
       type: String
+    },
+    breedName: {
+      type: String
     }
   },
   {
