@@ -3,9 +3,10 @@ import { LoginContext } from "../context/LoginContext";
 import defaultUser from "../img/default-user.png";
 import { DataContext } from "../context/DataContext";
 import CommentMessage from "../components/CommentMessage";
+import BreedDetailItem from "../components/BreedDetailItem";
 
 const Profile = props => {
-  const { user } = useContext(LoginContext);
+  const { user, myFavorites } = useContext(LoginContext);
   const { comments, setComments } = useContext(DataContext);
 
   return (
@@ -37,6 +38,22 @@ const Profile = props => {
               />
             )
         )}
+      </div>
+      <div className="breeds">
+        {myFavorites.map(breed => {
+          return (
+            <BreedDetailItem
+              id={breed.id}
+              key={breed.id}
+              name={breed.name}
+              type={breed.type}
+              size={breed.size}
+              img={breed.image}
+              personality={breed.personality}
+              toConsider={breed.toConsider}
+            />
+          );
+        })}
       </div>
     </div>
   );
