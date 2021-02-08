@@ -1,6 +1,11 @@
 import express from "express";
 import User from "../models/userSchema.js";
-import { getUsers, postUser, deleteUser } from "../controllers/users.js";
+import {
+  getUsers,
+  postUser,
+  deleteUser,
+  setFavorites
+} from "../controllers/users.js";
 
 const router = express.Router();
 
@@ -17,7 +22,7 @@ router.post("/");
 //@route PATCH api/users
 //@desc update an user
 //@access Public
-//router.patch("/");
+router.patch("/:email", setFavorites);
 
 //@route DELETE api/users/:id
 //@desc DELETE a user

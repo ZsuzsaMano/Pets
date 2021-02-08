@@ -21,10 +21,7 @@ const userSchema = new Schema(
       required: [true, "Password is required"]
     },
     myFavorites: {
-      type: [String]
-    },
-    myComments: {
-      type: [String]
+      type: String
     }
   },
   {

@@ -4,7 +4,7 @@ import PostComment from "./PostComment";
 import { DataContext } from "../context/DataContext";
 
 const Comments = ({ breedId, breedName }) => {
-  const { comments, setComments, getComments } = useContext(DataContext);
+  const { comments, getComments } = useContext(DataContext);
   const [showComments, toggleShowComments] = useState(false);
   const toggleComments = () => {
     toggleShowComments(!showComments);
@@ -30,7 +30,7 @@ const Comments = ({ breedId, breedName }) => {
           comment =>
             breedId === comment.breedId && (
               <CommentMessage
-                key={comment.id}
+                key={comment._id}
                 chatName={comment.chatName}
                 date={comment.createdAt}
                 message={comment.comment}

@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
+import { config } from "../config";
 
 const initContext = {
   registration: { name: "", email: "", password: "" },
@@ -8,7 +9,6 @@ const initContext = {
   errorMessage: "",
   isLoggedIn: false,
   myFavorites: [],
-  myComments: [],
   sendRegistration: () => {
     throw new Error("sendRegistration() not implemented");
   }
@@ -23,13 +23,13 @@ const LoginContextProvider = props => {
   const [isLoggedIn, setIsLoggedIn] = useState(initContext.isLoggedIn);
   const [user, setUser] = useState(initContext.user);
   const [myFavorites, setMyFavorites] = useState(initContext.myFavorites);
-  const [myComments, setMyComments] = useState(initContext.myComments);
 
   const sendRegistration = e => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/signup/",
+        `${config.serverURL}/api/signup/`,
+
         JSON.stringify({
           name: registration.name,
           email: registration.email,
@@ -50,7 +50,7 @@ const LoginContextProvider = props => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/signin/",
+        `${config.serverURL}/api/signin/`,
         JSON.stringify({
           email: login.email,
           password: login.password
@@ -64,6 +64,7 @@ const LoginContextProvider = props => {
       .then(res => {
         setUser(res.data.message);
         setIsLoggedIn(true);
+        setMyFavorites(JSON.parse(res.data.message.myFavorites));
       })
       .catch(err => console.log(err.message));
   };

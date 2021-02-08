@@ -1,14 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
+import axios from "axios";
+import { config } from "../config.js";
 
 const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
-  const { myFavorites, setMyFavorites } = useContext(LoginContext);
+  const { myFavorites, setMyFavorites, user } = useContext(LoginContext);
   const [selected, toggleSelected] = useState(false);
 
   const toggleFavorite = () => {
     if (myFavorites.find(inv => inv.id === id)) {
       setMyFavorites(myFavorites.filter(item => item.id !== id));
       toggleSelected(false);
+      sendFavorites();
     } else {
       setMyFavorites(myFavorites => [
         ...myFavorites,
@@ -22,6 +25,7 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
         }
       ]);
       toggleSelected(true);
+      sendFavorites();
     }
   };
 
@@ -32,6 +36,23 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
       toggleSelected(false);
     }
   }, []);
+
+  const sendFavorites = () => {
+    axios
+      .patch(
+        `${config.serverURL}/api/users/${user.email}`,
+        {
+          myFavorites: myFavorites
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(res => console.log("favorites sent"))
+      .catch(error => console.log(error));
+  };
 
   return (
     <div>
