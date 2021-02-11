@@ -15,7 +15,7 @@ export const postUser = (req, res) => {
 };
 
 export const setFavorites = (req, res) => {
-  User.update(
+  User.updateOne(
     { email: req.params.email },
     { $set: { myFavorites: JSON.stringify(req.body.myFavorites) } }
   )

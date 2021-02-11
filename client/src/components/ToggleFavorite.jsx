@@ -11,7 +11,6 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
     if (myFavorites.find(inv => inv.id === id)) {
       setMyFavorites(myFavorites.filter(item => item.id !== id));
       toggleSelected(false);
-      sendFavorites();
     } else {
       setMyFavorites(myFavorites => [
         ...myFavorites,
@@ -25,7 +24,6 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
         }
       ]);
       toggleSelected(true);
-      sendFavorites();
     }
   };
 
@@ -36,6 +34,10 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
       toggleSelected(false);
     }
   }, []);
+
+  useEffect(() => {
+    sendFavorites();
+  }, [myFavorites]);
 
   const sendFavorites = () => {
     axios
