@@ -4,7 +4,7 @@ import { getBreeds, postBreed, deleteBreed } from "../controllers/breeds.js";
 const router = express.Router();
 import multer from "multer";
 
-const upload = multer();
+const upload = multer({ dest: "upload/" });
 
 //@route GET api/breeds
 //@desc GET All breeds

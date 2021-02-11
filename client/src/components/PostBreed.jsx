@@ -7,26 +7,22 @@ import { config } from "../config.js";
 const PostBreed = props => {
   const history = useHistory();
   const { getBreeds, postBreed, setPostBreed } = useContext(DataContext);
+  const data = new FormData();
+  data.append("img", postBreed.img);
+  data.append("name", postBreed.name);
+  data.append("type", postBreed.type);
+  data.append("size", postBreed.size);
+  data.append("personality", postBreed.personality);
+  data.append("toConsider", postBreed.toConsider);
 
   const addBreed = e => {
     e.preventDefault();
     axios
-      .post(
-        `${config.serverURL}/api/breeds`,
-        JSON.stringify({
-          name: postBreed.name,
-          type: postBreed.type,
-          size: postBreed.size,
-          img: postBreed.img,
-          personality: postBreed.personality,
-          toConsider: postBreed.toConsider
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
+      .post(`${config.serverURL}/api/breeds`, data, {
+        headers: {
+          "Content-Type": "application/json"
         }
-      )
+      })
       .then(res => {
         getBreeds();
         history.push("/breeds/" + postBreed.type);
@@ -44,7 +40,7 @@ const PostBreed = props => {
 
   const handleFileChange = e => {
     const name = e.target.name;
-    const value = e.target.files[0].name;
+    const value = e.target.files[0];
     setPostBreed(prevState => ({
       ...prevState,
       [name]: value
@@ -53,7 +49,7 @@ const PostBreed = props => {
 
   return (
     <div className="postBreed">
-      <form action="" className="postBreed__form" enctype="multipart/form-data">
+      <form action="" className="postBreed__form" encType="multipart/form-data">
         <h3 className="postBreed__title">Add your Pet</h3>
         <select name="type" type="text" onChange={handleChange} required>
           <option value="">Choose type...</option>

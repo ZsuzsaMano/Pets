@@ -7,11 +7,12 @@ export const getBreeds = (req, res) => {
 };
 
 export const postBreed = (req, res) => {
+  console.log(res.file);
   const newBreed = new Breed({
     name: req.body.name,
     type: req.body.type,
     size: req.body.size,
-    img: req.file,
+    img: req.file.path,
     personality: req.body.personality,
     toConsider: req.body.toConsider
   });
