@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
+import DeleteBin from "./DeleteBin";
 
 const CommentMessage = ({ message, chatName, date, breedName }) => {
   const { user } = useContext(LoginContext);
@@ -7,7 +8,9 @@ const CommentMessage = ({ message, chatName, date, breedName }) => {
   return (
     <div className="message">
       <div className="message__head">
-        {chatName ? (
+        {//on Profile page breedName is passed down, on Breed page chatName
+        //depending on what page we are, displayslighly different content
+        chatName ? (
           <p className="message__name">
             {chatName === user.name ? "Me" : chatName}
           </p>
@@ -17,7 +20,10 @@ const CommentMessage = ({ message, chatName, date, breedName }) => {
 
         <p className="message__time">{date.slice(0, 10)}</p>
       </div>
-      <p className="message__text">{message}</p>
+      <div className="message__text">
+        {breedName ? <DeleteBin /> : ""}
+        <p>{message}</p>
+      </div>
     </div>
   );
 };
