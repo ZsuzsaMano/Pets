@@ -29,7 +29,7 @@ export const signup = (req, res, next) => {
     errors.push({ password: "mismatch" });
   }
   if (errors.length > 0) {
-    return res.status(422).json({ errors: errors });
+    return res.status(422).json({ error: errors });
   }
   User.findOne({ email: email })
 
@@ -88,11 +88,7 @@ export const signin = (req, res) => {
   }
 
   if (errors.length > 0) {
-    if (err) {
-      res.status(500).json({ error1: err });
-    }
-
-    return res.status(422).json({ errors: errors });
+    res.status(500).json(errors[0]);
   }
 
   User.findOne({ email: email })
