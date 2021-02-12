@@ -7,7 +7,7 @@ import BreedDetailItem from "../components/BreedDetailItem";
 
 const Profile = props => {
   const { user, myFavorites } = useContext(LoginContext);
-  const { comments } = useContext(DataContext);
+  const { comments, getComments } = useContext(DataContext);
 
   return (
     <div className="profile">
@@ -32,6 +32,8 @@ const Profile = props => {
             user._id === comment.userId && (
               <CommentMessage
                 key={comment._id}
+                commentId={comment._id}
+                getComments={getComments}
                 date={comment.createdAt}
                 message={comment.comment}
                 breedName={comment.breedName}

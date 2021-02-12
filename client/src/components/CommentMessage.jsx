@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import DeleteBin from "./DeleteBin";
 
+//called from Profile.jsx and also from Comments.jsx
 const CommentMessage = ({
   message,
   chatName,
@@ -28,7 +29,7 @@ const CommentMessage = ({
         <p className="message__time">{date.slice(0, 10)}</p>
       </div>
       <div className="message__text">
-        {breedName ? (
+        {chatName === user.name ? (
           <DeleteBin commentId={commentId} getComments={getComments} />
         ) : (
           ""
