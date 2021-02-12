@@ -19,5 +19,6 @@
   "engines": {
     "node": "15.x"
   },
-  "homepage": "https://github.com/ZsuzsaMano/Pets#readme"
+  "homepage": "https://github.com/ZsuzsaMano/Pets#readme",
+  "dependencies": {}
 }

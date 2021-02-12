@@ -66,7 +66,7 @@ const LoginContextProvider = props => {
         setIsLoggedIn(true);
         setMyFavorites(JSON.parse(res.data.message.myFavorites));
       })
-      .catch(err => console.log(err.message));
+      .catch(err => console.log(err));
   };
 
   return (

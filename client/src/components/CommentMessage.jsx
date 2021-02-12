@@ -2,9 +2,16 @@ import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 import DeleteBin from "./DeleteBin";
 
-const CommentMessage = ({ message, chatName, date, breedName }) => {
+const CommentMessage = ({
+  message,
+  chatName,
+  date,
+  breedName,
+  commentId,
+  getComments
+}) => {
   const { user } = useContext(LoginContext);
-
+  console.log(commentId);
   return (
     <div className="message">
       <div className="message__head">
@@ -21,7 +28,11 @@ const CommentMessage = ({ message, chatName, date, breedName }) => {
         <p className="message__time">{date.slice(0, 10)}</p>
       </div>
       <div className="message__text">
-        {breedName ? <DeleteBin /> : ""}
+        {breedName ? (
+          <DeleteBin commentId={commentId} getComments={getComments} />
+        ) : (
+          ""
+        )}
         <p>{message}</p>
       </div>
     </div>

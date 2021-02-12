@@ -1,10 +1,29 @@
 //main: App.scss
+.delete-confirm {
+  display: inline-block;
+  span {
+    display: inline-block;
+    margin: 5px;
+  }
+}
+.answerdelete {
+  color: black;
+  cursor: pointer;
+  &.yes {
+    color: green;
+  }
+}
+.askdelete {
+  font-size: 0.8rem;
+  color: red;
+}
 
 .bin-icon {
   vertical-align: baseline;
   margin: 0 4px;
   font-size: 1rem;
   text-align: right;
+  cursor: pointer;
 }
 .bin-icon__wrap {
   text-align: right;

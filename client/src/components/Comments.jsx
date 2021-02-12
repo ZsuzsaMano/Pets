@@ -9,7 +9,6 @@ const Comments = ({ breedId, breedName }) => {
   const toggleComments = () => {
     toggleShowComments(!showComments);
   };
-
   return (
     <div className="comments">
       <p className="open-comments" onClick={toggleComments}>
@@ -31,10 +30,12 @@ const Comments = ({ breedId, breedName }) => {
             breedId === comment.breedId && (
               <CommentMessage
                 key={comment._id}
+                commentId={comment._id}
                 chatName={comment.chatName}
                 date={comment.createdAt}
                 message={comment.comment}
                 breedName={comment.breadName}
+                getComments={getComments}
               />
             )
         )}
