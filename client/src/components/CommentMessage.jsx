@@ -12,7 +12,6 @@ const CommentMessage = ({
   getComments
 }) => {
   const { user } = useContext(LoginContext);
-  console.log(commentId);
   return (
     <div className="message">
       <div className="message__head">

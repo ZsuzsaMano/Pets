@@ -6,14 +6,12 @@ import { config } from "../config.js";
 
 const DeleteBin = ({ commentId, getComments }) => {
   const [showDelete, setShowDelete] = useState(false);
-  console.log(commentId);
 
   const deleteComment = () => {
     axios
       .delete(`${config.serverURL}/api/comments/${commentId}`)
       .then(() => getComments())
       .catch(err => console.log(err.message));
-    console.log("comment deleted");
   };
 
   return (
