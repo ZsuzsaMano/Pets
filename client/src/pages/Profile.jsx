@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
-import defaultUser from "../img/default-user.png";
 import { DataContext } from "../context/DataContext";
 import CommentMessage from "../components/CommentMessage";
 import BreedDetailItem from "../components/BreedDetailItem";
 import * as IoIcons from "react-icons/io";
 import { IconContext } from "react-icons";
+import ProfilePersonal from "../components/ProfilePersonal";
 
 const Profile = props => {
   const { user, myFavorites } = useContext(LoginContext);
@@ -13,20 +13,7 @@ const Profile = props => {
 
   return (
     <div className="profile">
-      <div className="profile__personal">
-        <div className="profile__img">
-          <img
-            src={user.img ? user.img : defaultUser}
-            alt="user"
-            className="profile__img"
-          />
-        </div>
-        <div className="profile__info">
-          <h3 className="profile_name">{user.name}</h3>
-          <p className="profile__email">{user.email}</p>
-        </div>
-      </div>
-
+      <ProfilePersonal />
       <div className="comments profile-comments">
         <h3>
           {" "}

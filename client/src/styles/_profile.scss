@@ -25,3 +25,12 @@
   margin: 0 6px;
   font-size: 1.6rem;
 }
+
+.edit-icon {
+  margin: 0 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  &__wrap {
+    text-align: right;
+  }
+}
