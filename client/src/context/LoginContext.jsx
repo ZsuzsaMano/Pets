@@ -76,6 +76,7 @@ const LoginContextProvider = props => {
         setLogin,
         sendLogin,
         user,
+        setUser,
         registration,
         setRegistration,
         errorMessage,

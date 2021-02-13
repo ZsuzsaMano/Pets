@@ -34,3 +34,12 @@
     text-align: right;
   }
 }
+
+.profile__edit {
+  max-width: 300px;
+  height: 120px;
+  @include flex(space-around, center, column);
+  input {
+    text-align: center;
+  }
+}
