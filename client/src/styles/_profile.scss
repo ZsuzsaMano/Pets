@@ -3,14 +3,25 @@
 .profile {
   text-align: center;
   &__personal {
+    @include flex(space-around, center, row);
     border: 1px solid black;
+    flex-wrap: wrap;
     padding: 1rem;
+  }
+  h3 {
+    font-size: 1.6rem;
   }
 }
 
 .profile-comments {
   max-width: 300px;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #dee1e394;
   margin: 5px auto;
+}
+
+.paw-icon {
+  vertical-align: middle;
+  margin: 0 6px;
+  font-size: 1.6rem;
 }

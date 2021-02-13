@@ -17,12 +17,12 @@ const CommentMessage = ({
       <div className="message__head">
         {//on Profile page breedName is passed down, on Breed page chatName
         //depending on what page we are, displayslighly different content
-        chatName ? (
+        breedName ? (
+          <p className="message__name">{breedName}</p>
+        ) : (
           <p className="message__name">
             {chatName === user.name ? "Me" : chatName}
           </p>
-        ) : (
-          <p className="message__name">{breedName}</p>
         )}
 
         <p className="message__time">{date.slice(0, 10)}</p>

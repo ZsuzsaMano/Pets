@@ -4,6 +4,8 @@ import defaultUser from "../img/default-user.png";
 import { DataContext } from "../context/DataContext";
 import CommentMessage from "../components/CommentMessage";
 import BreedDetailItem from "../components/BreedDetailItem";
+import * as IoIcons from "react-icons/io";
+import { IconContext } from "react-icons";
 
 const Profile = props => {
   const { user, myFavorites } = useContext(LoginContext);
@@ -26,7 +28,16 @@ const Profile = props => {
       </div>
 
       <div className="comments profile-comments">
-        <h3>My Comments</h3>
+        <h3>
+          {" "}
+          <IconContext.Provider value={{ className: "paw-icon" }}>
+            <IoIcons.IoIosPaw />
+          </IconContext.Provider>
+          My Comments
+          <IconContext.Provider value={{ className: "paw-icon" }}>
+            <IoIcons.IoIosPaw />
+          </IconContext.Provider>
+        </h3>
         {comments.map(
           comment =>
             user._id === comment.userId && (
@@ -37,10 +48,21 @@ const Profile = props => {
                 date={comment.createdAt}
                 message={comment.comment}
                 breedName={comment.breedName}
+                chatName={comment.chatName}
               />
             )
         )}
       </div>
+      <h3>
+        {" "}
+        <IconContext.Provider value={{ className: "paw-icon" }}>
+          <IoIcons.IoIosPaw />
+        </IconContext.Provider>
+        My Favorites
+        <IconContext.Provider value={{ className: "paw-icon" }}>
+          <IoIcons.IoIosPaw />
+        </IconContext.Provider>
+      </h3>
       <div className="breeds">
         {myFavorites.map(breed => {
           return (

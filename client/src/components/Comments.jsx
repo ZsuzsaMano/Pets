@@ -34,7 +34,6 @@ const Comments = ({ breedId, breedName }) => {
                 chatName={comment.chatName}
                 date={comment.createdAt}
                 message={comment.comment}
-                breedName={comment.breadName}
                 getComments={getComments}
               />
             )
