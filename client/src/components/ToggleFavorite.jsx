@@ -42,7 +42,7 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
   const sendFavorites = () => {
     axios
       .patch(
-        `${config.serverURL}/api/users/${user.email}`,
+        `${config.serverURL}/api/users/${user._id}`,
         {
           myFavorites: myFavorites
         },

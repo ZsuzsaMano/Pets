@@ -14,9 +14,9 @@ export const postUser = (req, res) => {
     .catch(err => res.status(409).json(err.message));
 };
 
-export const setFavorites = (req, res) => {
+export const updateUser = (req, res) => {
   User.updateOne(
-    { email: req.params.email },
+    { _id: req.params.id },
     { $set: { myFavorites: JSON.stringify(req.body.myFavorites) } }
   )
     .then(WriteResult => res.json(WriteResult))

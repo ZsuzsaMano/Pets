@@ -4,7 +4,7 @@ import {
   getUsers,
   postUser,
   deleteUser,
-  setFavorites
+  updateUser
 } from "../controllers/users.js";
 
 const router = express.Router();
@@ -22,7 +22,7 @@ router.post("/");
 //@route PATCH api/users
 //@desc update an user
 //@access Public
-router.patch("/:email", setFavorites);
+router.patch("/:id", updateUser);
 
 //@route DELETE api/users/:id
 //@desc DELETE a user
