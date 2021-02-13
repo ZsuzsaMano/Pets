@@ -29,7 +29,7 @@ export const signup = (req, res, next) => {
     errors.push({ password: "mismatch" });
   }
   if (errors.length > 0) {
-    return res.status(422).json({ error: errors });
+    return res.status(422).json({ error: errors[0] });
   }
   User.findOne({ email: email })
 
@@ -76,15 +76,15 @@ export const signin = (req, res) => {
   let { email, password } = req.body;
   let errors = [];
   if (!email) {
-    errors.push({ email: "required" });
+    errors.push("email is required");
   }
 
   if (!emailRegexp.test(email)) {
-    errors.push({ email: "invalid email" });
+    errors.push("invalid email");
   }
 
   if (!password) {
-    errors.push({ passowrd: "required" });
+    errors.push("password is required");
   }
 
   if (errors.length > 0) {
@@ -95,43 +95,34 @@ export const signin = (req, res) => {
     .then(user => {
       if (!user) {
         return res.status(404).json({
-          errors: [{ user: "not found" }]
+          errors: ["user not found"]
         });
       } else {
-        bcrypt
-          .compare(password, user.password)
-          .then(isMatch => {
-            if (!isMatch) {
-              return res
-                .status(400)
-                .json({ errors: [{ password: "incorrect" }] });
+        bcrypt.compare(password, user.password).then(isMatch => {
+          if (!isMatch) {
+            return res.status(400).json({ errors: [" password incorrect"] });
+          }
+
+          const options = { expiresIn: 2592000 };
+          const payload = {
+            user: user.email,
+            id: user._id
+          };
+          jwt.sign(payload, process.env.TOKEN_SECRET, options, (err, token) => {
+            if (err) {
+              res.status(500).json({ erros: err.message });
+            } else {
+              return res.status(200).json({
+                success: true,
+                token: token,
+                message: user
+              });
             }
-
-            let access_token = createJWT(user.email, user._id, 3600);
-            jwt.verify(
-              access_token,
-              process.env.TOKEN_SECRET,
-              (err, decoded) => {
-                if (err) {
-                  res.status(500).json({ error1: err });
-                }
-
-                if (decoded) {
-                  return res.status(200).json({
-                    success: true,
-                    token: access_token,
-                    message: user
-                  });
-                }
-              }
-            );
-          })
-          .catch(err => {
-            res.status(500).json({ error2: err });
           });
+        });
       }
     })
     .catch(err => {
-      res.status(500).json({ error3: err });
+      res.status(500).json({ erros: err });
     });
 };
