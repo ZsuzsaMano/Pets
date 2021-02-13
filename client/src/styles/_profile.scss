@@ -8,6 +8,9 @@
     flex-wrap: wrap;
     padding: 1rem;
   }
+  &__img img {
+    max-width: 300px;
+  }
   h3 {
     font-size: 1.6rem;
   }

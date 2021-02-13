@@ -15,12 +15,23 @@ export const postUser = (req, res) => {
 };
 
 export const updateUser = (req, res) => {
-  User.updateOne(
-    { _id: req.params.id },
-    { $set: { myFavorites: JSON.stringify(req.body.myFavorites) } }
-  )
-    .then(WriteResult => res.json(WriteResult))
-    .catch(err => res.status(404).json(err.writeError));
+  if (req.body.myFavorites) {
+    User.updateOne(
+      { _id: req.params.id },
+      { $set: { myFavorites: JSON.stringify(req.body.myFavorites) } }
+    )
+      .then(WriteResult => res.json(WriteResult))
+      .catch(err => res.status(404).json(err.writeError));
+  } else {
+    User.updateOne(
+      { _id: req.params.id },
+      {
+        $set: { name: req.body.name, email: req.body.email, img: req.body.img }
+      }
+    )
+      .then(WriteResult => res.json(WriteResult))
+      .catch(err => res.status(404).json(err.writeError));
+  }
 };
 
 export const deleteUser = (req, res) => {
