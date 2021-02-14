@@ -2,9 +2,11 @@ import React from "react";
 import defaultUser from "../img/default-user.png";
 import axios from "axios";
 import { config } from "../config.js";
+import Loader from "./Loader";
 
-const ProfileImage = ({ user, setUser }) => {
+const ProfileImage = ({ user, setUser, loading, setLoading }) => {
   const uploadImage = async e => {
+    setLoading(true);
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
@@ -38,23 +40,29 @@ const ProfileImage = ({ user, setUser }) => {
           }
         }
       )
-      .then(res => console.log("image uploaded"))
+      .then(res => setLoading(false))
       .catch(error => console.log(error));
   };
 
   return (
     <div className="profile__img">
-      <img
-        src={user.img ? user.img : defaultUser}
-        alt="user"
-        className="profile__img"
-      />
-      <input
-        type="file"
-        name="file"
-        placeholder="change image"
-        onChange={uploadImage}
-      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="profile__img">
+          <img
+            src={user.img ? user.img : defaultUser}
+            alt="user"
+            className="profile__img"
+          />
+          <input
+            type="file"
+            name="file"
+            placeholder="change image"
+            onChange={uploadImage}
+          />
+        </div>
+      )}
     </div>
   );
 };

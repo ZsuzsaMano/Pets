@@ -6,7 +6,7 @@ import axios from "axios";
 import { config } from "../config.js";
 import ProfileImage from "./ProfileImage";
 
-const ProfilePersonal = () => {
+const ProfilePersonal = ({ loading, setLoading }) => {
   const { user, setUser } = useContext(LoginContext);
 
   const [edit, setEdit] = useState(false);
@@ -41,7 +41,13 @@ const ProfilePersonal = () => {
 
   return (
     <div className="profile__personal">
-      <ProfileImage user={user} setUser={setUser} sendUserInfo={sendUserInfo} />
+      <ProfileImage
+        user={user}
+        setUser={setUser}
+        sendUserInfo={sendUserInfo}
+        loading={loading}
+        setLoading={setLoading}
+      />
 
       {edit ? (
         <div className="profile__info">

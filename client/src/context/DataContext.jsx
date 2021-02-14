@@ -62,6 +62,7 @@ const DataContextProvider = props => {
     <DataContext.Provider
       value={{
         loading,
+        setLoading,
         types,
         breeds,
         getBreeds,

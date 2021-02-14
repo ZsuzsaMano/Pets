@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import PetTypeListItem from "../components/PetTypeListItem";
 import { DataContext } from "../context/DataContext";
+import Loader from "../components/Loader";
 
 const PetTypeList = () => {
-  const { types, getTypes } = useContext(DataContext);
+  const { types, getTypes, loading } = useContext(DataContext);
 
   useEffect(() => {
     getTypes();
@@ -11,7 +12,10 @@ const PetTypeList = () => {
 
   return (
     <div className="petTypeList">
-      {types &&
+      {loading ? (
+        <Loader />
+      ) : (
+        types &&
         types.map(petType => {
           return (
             <PetTypeListItem
@@ -20,7 +24,8 @@ const PetTypeList = () => {
               img={petType.img}
             />
           );
-        })}
+        })
+      )}
     </div>
   );
 };

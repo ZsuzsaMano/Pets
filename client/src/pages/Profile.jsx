@@ -9,11 +9,13 @@ import ProfilePersonal from "../components/ProfilePersonal";
 
 const Profile = props => {
   const { user, myFavorites } = useContext(LoginContext);
-  const { comments, getComments } = useContext(DataContext);
+  const { comments, getComments, loading, setLoading } = useContext(
+    DataContext
+  );
 
   return (
     <div className="profile">
-      <ProfilePersonal />
+      <ProfilePersonal loading={loading} setLoading={setLoading} />
       <div className="comments profile-comments">
         <h3>
           {" "}
