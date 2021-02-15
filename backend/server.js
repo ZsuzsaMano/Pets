@@ -41,6 +41,7 @@ app.use("/api/breeds", breeds);
 app.use("/api/comments", comments);
 
 //render client
+//app.use(express.static(path.join(`${__dirname}`, "public", "uploads")));
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));
 app.get("*", (req, res) => {
   res

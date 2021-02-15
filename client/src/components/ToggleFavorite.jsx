@@ -33,11 +33,11 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
     } else {
       toggleSelected(false);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     sendFavorites();
-  }, [myFavorites]);
+  }, [myFavorites]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const sendFavorites = () => {
     axios

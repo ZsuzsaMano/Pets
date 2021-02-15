@@ -25,19 +25,20 @@ const Comments = ({ breedId, breedName }) => {
           getComments={getComments}
         />
 
-        {comments.map(
-          comment =>
-            breedId === comment.breedId && (
-              <CommentMessage
-                key={comment._id}
-                commentId={comment._id}
-                chatName={comment.chatName}
-                date={comment.createdAt}
-                message={comment.comment}
-                getComments={getComments}
-              />
-            )
-        )}
+        {comments &&
+          comments.map(
+            comment =>
+              breedId === comment.breedId && (
+                <CommentMessage
+                  key={comment._id}
+                  commentId={comment._id}
+                  chatName={comment.chatName}
+                  date={comment.createdAt}
+                  message={comment.comment}
+                  getComments={getComments}
+                />
+              )
+          )}
       </div>
     </div>
   );

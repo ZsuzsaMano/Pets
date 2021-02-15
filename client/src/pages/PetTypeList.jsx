@@ -8,7 +8,7 @@ const PetTypeList = () => {
 
   useEffect(() => {
     getTypes();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="petTypeList">

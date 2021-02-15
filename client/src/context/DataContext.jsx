@@ -53,10 +53,12 @@ const DataContextProvider = props => {
   useEffect(() => {
     getComments();
   }, []);
+  // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     getBreeds();
   }, []);
+  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <DataContext.Provider
