@@ -3,8 +3,19 @@ import Breed from "../models/breedSchema.js";
 import { getBreeds, postBreed, deleteBreed } from "../controllers/breeds.js";
 const router = express.Router();
 import multer from "multer";
+import path from "path";
 
-const upload = multer({ dest: "upload/" });
+const storage = multer.diskStorage({
+  destination: "./uploads",
+  filename: function(req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  }
+});
+
+var upload = multer({ storage: storage, limits: { fileSize: 1000000 } });
 
 //@route GET api/breeds
 //@desc GET All breeds

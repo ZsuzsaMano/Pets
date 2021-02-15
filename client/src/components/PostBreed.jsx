@@ -49,7 +49,12 @@ const PostBreed = props => {
 
   return (
     <div className="postBreed">
-      <form action="" className="postBreed__form" encType="multipart/form-data">
+      <form
+        action="/upload"
+        method="POST"
+        className="postBreed__form"
+        encType="multipart/form-data"
+      >
         <h3 className="postBreed__title">Add your Pet</h3>
         <select name="type" type="text" onChange={handleChange} required>
           <option value="">Choose type...</option>
