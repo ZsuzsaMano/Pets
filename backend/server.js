@@ -39,7 +39,7 @@ app.use("/api/types", types);
 app.use("/api/users", users);
 app.use("/api/breeds", breeds);
 app.use("/api/comments", comments);
-
+app.use("/uploads", express.static("uploads"));
 //render client
 //app.use(express.static(path.join(`${__dirname}`, "public", "uploads")));
 app.use(express.static(path.join(`${__dirname}`, "..", "client", "build")));

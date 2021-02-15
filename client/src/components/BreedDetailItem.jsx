@@ -1,6 +1,7 @@
 import React from "react";
 import ToggleFavorite from "../components/ToggleFavorite";
 import Comments from "../components/Comments";
+import { config } from "../config.js";
 
 const BreedDetailItem = ({
   id,
@@ -25,7 +26,10 @@ const BreedDetailItem = ({
         />
       </header>
       <div className="breedDetailItem__img">
-        <img src={img} alt={name} />
+        <img
+          src={img[0] === "h" ? img : `${config.serverURL}/${img}`}
+          alt={name}
+        />
       </div>
       <ul>
         <li>Size: {size}</li>
