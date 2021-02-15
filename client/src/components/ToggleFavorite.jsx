@@ -2,10 +2,15 @@ import React, { useContext, useState, useEffect } from "react";
 import { LoginContext } from "../context/LoginContext";
 import axios from "axios";
 import { config } from "../config.js";
+import { useHistory } from "react-router-dom";
 
 const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
-  const { myFavorites, setMyFavorites, user } = useContext(LoginContext);
+  const { myFavorites, setMyFavorites, user, isLoggedIn } = useContext(
+    LoginContext
+  );
   const [selected, toggleSelected] = useState(false);
+  const [hide, setHide] = useState(true);
+  const history = useHistory();
 
   const toggleFavorite = () => {
     if (myFavorites.find(inv => inv.id === id)) {
@@ -40,27 +45,40 @@ const ToggleFavorite = ({ id, name, image, size, personality, toConsider }) => {
   }, [myFavorites]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const sendFavorites = () => {
-    axios
-      .patch(
-        `${config.serverURL}/api/users/${user._id}`,
-        {
-          myFavorites: myFavorites
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
+    if (user) {
+      axios
+        .patch(
+          `${config.serverURL}/api/users/${user._id}`,
+          {
+            myFavorites: myFavorites
+          },
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
           }
-        }
-      )
-      .then(res => console.log("favorites sent"))
-      .catch(error => console.log(error));
+        )
+        .then(res => console.log("favorites sent"))
+        .catch(error => console.log(error));
+    }
   };
 
   return (
     <div>
+      {!hide && !isLoggedIn && (
+        <p className="warning" onClick={() => history.push("/login")}>
+          Sign in to like
+        </p>
+      )}
       <svg
         className={`toggleFavorite ${selected ? "toggleFavorite-active" : ""}`}
-        onClick={toggleFavorite}
+        onClick={
+          isLoggedIn
+            ? toggleFavorite
+            : () => {
+                setHide(!hide);
+              }
+        }
         xmlns="http://www.w3.org/2000/svg"
         id="svg1"
         version="1.1"
