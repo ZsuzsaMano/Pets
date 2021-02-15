@@ -6,38 +6,28 @@ import { createJWT } from "../utils/auth.js";
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 export const signup = (req, res, next) => {
-  let { name, email, password, password_confirmation } = req.body;
+  let { name, email, password } = req.body;
   let errors = [];
   if (!name) {
-    errors.push({ name: "required" });
+    errors.push(" name is required");
   }
   if (!email) {
-    errors.push({ email: "required" });
+    errors.push("email is required");
   }
   if (!emailRegexp.test(email)) {
-    errors.push({ email: "invalid" });
+    errors.push("email is invalid");
   }
   if (!password) {
-    errors.push({ password: "required" });
-  }
-  if (!password_confirmation) {
-    errors.push({
-      password_confirmation: "required"
-    });
-  }
-  if (password != password_confirmation) {
-    errors.push({ password: "mismatch" });
+    errors.push(" passowrd is required");
   }
   if (errors.length > 0) {
-    return res.status(422).json({ error: errors[0] });
+    return res.status(422).json(errors[0]);
   }
   User.findOne({ email: email })
 
     .then(user => {
       if (user) {
-        return res
-          .status(422)
-          .json({ errors: [{ user: "email already exists" }] });
+        return res.status(422).json("email already exists");
       } else {
         const user = new User({
           name: name,
@@ -57,18 +47,14 @@ export const signup = (req, res, next) => {
                 });
               })
               .catch(err => {
-                res.status(500).json({
-                  errors: [{ error: err }]
-                });
+                res.status(500).json("Something went wrong");
               });
           });
         });
       }
     })
     .catch(err => {
-      res.status(500).json({
-        errors: [{ error: "Something went wrong" }]
-      });
+      res.status(500).json("Something went wrong");
     });
 };
 
@@ -94,13 +80,11 @@ export const signin = (req, res) => {
   User.findOne({ email: email })
     .then(user => {
       if (!user) {
-        return res.status(404).json({
-          errors: ["user not found"]
-        });
+        return res.status(404).json("user not found");
       } else {
         bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            return res.status(400).json({ errors: [" password incorrect"] });
+            return res.status(400).json(" password incorrect");
           }
 
           const options = { expiresIn: 2592000 };
@@ -110,7 +94,7 @@ export const signin = (req, res) => {
           };
           jwt.sign(payload, process.env.TOKEN_SECRET, options, (err, token) => {
             if (err) {
-              res.status(500).json({ erros: err.message });
+              res.status(500).json(err.message);
             } else {
               return res.status(200).json({
                 success: true,
@@ -123,6 +107,6 @@ export const signin = (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).json({ erros: err });
+      res.status(500).json("errors");
     });
 };

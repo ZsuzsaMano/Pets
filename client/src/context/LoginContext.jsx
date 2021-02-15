@@ -7,6 +7,7 @@ const initContext = {
   login: { email: "", password: "" },
   user: "",
   errorMessage: "",
+  loginErrorMessage: "",
   isLoggedIn: false,
   myFavorites: [],
   sendRegistration: () => {
@@ -20,6 +21,9 @@ const LoginContextProvider = props => {
   const [registration, setRegistration] = useState(initContext.registration);
   const [login, setLogin] = useState(initContext.login);
   const [errorMessage, setErrorMessage] = useState(initContext.errorMessage);
+  const [loginErrorMessage, setLoginErrorMessage] = useState(
+    initContext.loginErrorMessage
+  );
   const [isLoggedIn, setIsLoggedIn] = useState(initContext.isLoggedIn);
   const [user, setUser] = useState(initContext.user);
   const [myFavorites, setMyFavorites] = useState(initContext.myFavorites);
@@ -29,12 +33,10 @@ const LoginContextProvider = props => {
     axios
       .post(
         `${config.serverURL}/api/signup/`,
-
         JSON.stringify({
           name: registration.name,
           email: registration.email,
-          password: registration.password,
-          password_confirmation: registration.password
+          password: registration.password
         }),
         {
           headers: {
@@ -43,7 +45,7 @@ const LoginContextProvider = props => {
         }
       )
       .then(res => setIsLoggedIn(true))
-      .catch(err => console.log(err));
+      .catch(err => setErrorMessage(err.response.data));
   };
 
   const sendLogin = e => {
@@ -66,7 +68,7 @@ const LoginContextProvider = props => {
         setIsLoggedIn(true);
         setMyFavorites(JSON.parse(res.data.message.myFavorites));
       })
-      .catch(err => setErrorMessage(err.response.data));
+      .catch(err => setLoginErrorMessage(err.response.data));
   };
 
   return (
@@ -80,6 +82,7 @@ const LoginContextProvider = props => {
         registration,
         setRegistration,
         errorMessage,
+        loginErrorMessage,
         isLoggedIn,
         setIsLoggedIn,
         sendRegistration,

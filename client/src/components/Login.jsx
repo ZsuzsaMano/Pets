@@ -1,21 +1,18 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { LoginContext } from '../context/LoginContext';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { LoginContext } from "../context/LoginContext";
 
 const Login = () => {
-  const {
-    errorMessage,
-    login,
-    setLogin,
-    sendLogin,
-  } = useContext(LoginContext);
+  const { loginErrorMessage, login, setLogin, sendLogin } = useContext(
+    LoginContext
+  );
 
   const handleChange = e => {
     const { name, value } = e.target;
     setLogin(prevState => ({
-        ...prevState,
-        [name]: value,
-      }));
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
@@ -25,8 +22,8 @@ const Login = () => {
         <input
           type="text"
           placeholder="email"
-          name = "email"
-          value = {login.email}
+          name="email"
+          value={login.email}
           onChange={handleChange}
           required
         />
@@ -38,7 +35,7 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <p className="error">{errorMessage}</p>
+        <p className="error">{loginErrorMessage}</p>
         <button type="submit" className="submit" onClick={sendLogin}>
           Login
         </button>

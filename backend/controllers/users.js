@@ -20,8 +20,8 @@ export const updateUser = (req, res) => {
       { _id: req.params.id },
       { $set: { myFavorites: JSON.stringify(req.body.myFavorites) } }
     )
-      .then(WriteResult => res.json(WriteResult))
-      .catch(err => res.status(404).json(err.writeError));
+      .then(res => console.log("favorites updated"))
+      .catch(err => res.status(404).json("error updating favorites"));
   } else {
     User.updateOne(
       { _id: req.params.id },
@@ -29,8 +29,8 @@ export const updateUser = (req, res) => {
         $set: { name: req.body.name, email: req.body.email, img: req.body.img }
       }
     )
-      .then(WriteResult => res.json(WriteResult))
-      .catch(err => res.status(404).json(err.writeError));
+      .then(res => console.log("user info updated"))
+      .catch(err => res.status(404).json("error updating user info"));
   }
 };
 
