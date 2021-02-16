@@ -30,7 +30,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
-    <img src="./imgREADME/home.png" alt="landing page" >
+    <img src="./imgREADME/home.png" alt="landing page" width="300px">
   </a>
 </p>
 <br>
@@ -39,7 +39,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
-    <img src="./imgREADME/pets.png" alt="pet types" >
+    <img src="./imgREADME/pets.png" alt="pet types" width="300px">
   </a>
 </p>
 <br>
@@ -50,7 +50,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
-    <img src="./imgREADME/breed.png" alt="breed page" >
+    <img src="./imgREADME/breed.png" alt="breed page" width="300px" >
   </a>
 </p>
 <br>
@@ -61,7 +61,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
-    <img src="./imgREADME/addPet.png" alt="add pet page" >
+    <img src="./imgREADME/addPet.png" alt="add pet page" width="300px">
   </a>
 </p>
 <br>
@@ -72,7 +72,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
-    <img src="./imgREADME/profile.png" alt="profile page" >
+    <img src="./imgREADME/profile.png" alt="profile page" width="300px">
   </a>
 </p>
 <br>
