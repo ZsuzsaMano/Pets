@@ -1,3 +1,76 @@
+# Pet Personalities
+
+M(ongoDB) E(xpress) R(eact) N(ode.js)
+Full-Stack Mobilfirst app
+
+  <a href="https://petpersonalities.herokuapp.com/">
+petpersonalities.herokuapp.com
+  </a>
+<br/>
+<!-- Minimum viable product-->
+<br/>
+<p align="center">
+
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/mvp.png" alt="mvp" >
+  </a>
+</p>
+
+<p align="center">
+  React, JS6+, SASS, Node.js, Express, Multer, Mongoose, MongoDBAtlas, and more
+</p>
+
+---
+
+Find out the personalities of different pets, and add your own expierience.
+
+---
+
+### Landing page
+
+<p align="center">
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/home.png" alt="landing page" >
+  </a>
+</p>
+<br>
+
+### Pet Types
+
+<p align="center">
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/pets.png" alt="pet types" >
+  </a>
+</p>
+<br>
+
+### Breeds /logged in users can mark as favorite/
+
+<p align="center">
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/breed.png" alt="breed page" >
+  </a>
+</p>
+<br>
+
+### Add Pet /only logged in users/
+
+<p align="center">
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/addPet.png" alt="add pet page" >
+  </a>
+</p>
+<br>
+
+### Profile /only logged in users/
+
+<p align="center">
+  <a href="https://petpersonalities.herokuapp.com/">
+    <img src="./imgREADME/profile.png" alt="profile page" >
+  </a>
+</p>
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
