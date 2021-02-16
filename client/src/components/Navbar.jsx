@@ -9,16 +9,25 @@ const Navbar = () => {
     <div className="navbar">
       <ul>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" exact activeClassName="active">
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/types">Pets</NavLink>
+          <NavLink to="/types" activeClassName="active">
+            Pets
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/addPet">Add Pet</NavLink>
+          <NavLink to="/addPet" activeClassName="active">
+            Add Pet
+          </NavLink>
         </li>
         <li>
-          <NavLink to={isLoggedIn ? "/profile" : "/login"}>
+          <NavLink
+            to={isLoggedIn ? "/profile" : "/login"}
+            activeClassName="active"
+          >
             {isLoggedIn ? user.name : "Login"}
           </NavLink>
         </li>
