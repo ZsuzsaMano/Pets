@@ -1,6 +1,6 @@
 //main: App.scss
 
-.landing{
+.landing {
   background-image: url(../img/pet3.jpeg);
   min-height: 80vh;
   background-position: bottom;
@@ -9,14 +9,16 @@
   padding-top: 5%;
 }
 
-@media screen and (min-width:550px){
-  .landing{
-  background-image: url(../img/pet2.jpeg);
-  background-position: bottom;}
+@media screen and (min-width: 550px) {
+  .landing {
+    background-image: url(../img/pet2.jpeg);
+    background-position: bottom;
+  }
 }
 
-@media screen and (min-width:780px){
-  .landing{
-  background-image: url(../img/pets.png);
-  background-size: contain;}
+@media screen and (min-width: 780px) {
+  .landing {
+    background-image: url(../img/pets.png);
+    background-size: cover;
+  }
 }
