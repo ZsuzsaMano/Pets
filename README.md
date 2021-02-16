@@ -46,7 +46,7 @@ Find out the personalities of different pets, and add your own expierience.
 
 ### Breeds
 
-/logged in users can mark as favorite and add delete own comments/
+/logged in users can mark as favorite, add and delete own comments/
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
