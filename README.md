@@ -44,7 +44,9 @@ Find out the personalities of different pets, and add your own expierience.
 </p>
 <br>
 
-### Breeds /logged in users can mark as favorite/
+### Breeds
+
+/logged in users can mark as favorite/
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
@@ -53,7 +55,9 @@ Find out the personalities of different pets, and add your own expierience.
 </p>
 <br>
 
-### Add Pet /only logged in users/
+### Add Pet
+
+/only logged in users/
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
@@ -62,7 +66,9 @@ Find out the personalities of different pets, and add your own expierience.
 </p>
 <br>
 
-### Profile /only logged in users/
+### Profile
+
+/only logged in users/
 
 <p align="center">
   <a href="https://petpersonalities.herokuapp.com/">
