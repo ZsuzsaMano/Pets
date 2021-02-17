@@ -44,7 +44,10 @@ const LoginContextProvider = props => {
           }
         }
       )
-      .then(res => setIsLoggedIn(true))
+      .then(res => {
+        setUser(res.data.message);
+        setIsLoggedIn(true);
+      })
       .catch(err => setErrorMessage(err.response.data));
   };
 

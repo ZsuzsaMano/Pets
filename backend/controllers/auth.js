@@ -43,7 +43,8 @@ export const signup = (req, res, next) => {
               .then(response => {
                 res.status(200).json({
                   success: true,
-                  result: response
+                  result: response,
+                  message: user
                 });
               })
               .catch(err => {
