@@ -1,12 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { DataContext } from "../context/DataContext";
 import { config } from "../config.js";
+import Loader from "./Loader";
 
 const PostBreed = props => {
   const history = useHistory();
-  const { getBreeds, postBreed, setPostBreed } = useContext(DataContext);
+  const {
+    getBreeds,
+    postBreed,
+    setPostBreed,
+    loading,
+    setLoading
+  } = useContext(DataContext);
+
+  const [warning, setWarning] = useState("");
+
   const data = new FormData();
   data.append("img", postBreed.img);
   data.append("name", postBreed.name);
@@ -16,6 +26,7 @@ const PostBreed = props => {
   data.append("toConsider", postBreed.toConsider);
 
   const addBreed = e => {
+    setLoading(true);
     e.preventDefault();
     axios
       .post(`${config.serverURL}/api/breeds`, data, {
@@ -26,6 +37,7 @@ const PostBreed = props => {
       .then(res => {
         getBreeds();
         history.push("/breeds/" + postBreed.type);
+        setLoading(false);
       })
       .catch(err => console.log(err));
   };
@@ -76,16 +88,20 @@ const PostBreed = props => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="img">
-          image
-          <input
-            name="img"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
-          />
-        </label>
+        {loading ? (
+          <Loader />
+        ) : (
+          <label htmlFor="img">
+            image
+            <input
+              name="img"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              required
+            />
+          </label>
+        )}
         <textarea
           name="personality"
           onChange={handleChange}
